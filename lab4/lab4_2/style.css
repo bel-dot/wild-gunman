@@ -1,0 +1,48 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+p {
+    line-height: 5px;
+    font-size: 20px;
+}
+
+.header {
+    color: red;
+}
+
+.header2 {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#bold {
+    font-weight: bold;
+}
+
+#italic {
+    font-style: italic;
+}
+
+#line-through {
+    text-decoration: line-through;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.final {
+    font-style: italic;
+    font-family: monospace;
+    line-height: initial;
+}
+
+hr {
+    color: green;
+    background-color: green;
+    width: 40%;
+    height: 8px;
+    border-radius: 5px;
+}
