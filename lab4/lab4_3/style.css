@@ -1,0 +1,27 @@
+a {
+    color: purple;
+}
+
+.main {
+    color: green;
+}
+
+.square {
+    list-style: square;
+}
+
+.img {
+    list-style-image: url(li.svg);
+}
+
+ul li ul {
+    list-style: none;
+}
+
+.square li a {
+    text-decoration-line: none;
+}
+
+ol {
+    list-style-position: inside;
+}
