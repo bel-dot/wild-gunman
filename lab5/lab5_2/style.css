@@ -1,0 +1,34 @@
+td, th {
+    width: 170px;
+    height: 50px;
+    text-align: center;
+}
+
+tr:nth-child(1) {
+    background: linear-gradient(to right,
+      rgb(221, 221, 221) 0%,
+      rgb(221, 221, 221) 20%,
+      rgb(153,153,153) 20%,
+      rgb(153,153,153) 40%,
+      rgb(102,102,102) 40%,
+      rgb(102,102,102) 60%,
+      rgb(75, 75, 75) 60%,
+      rgb(75, 75, 75) 80%,
+      rgb(61, 61, 61) 80%,
+      rgb(61, 61, 61) 100%);
+
+    border: 0px !important;
+}
+
+tr > td:nth-child(1) {
+    background-color: rgb(114, 114, 114);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(114, 114, 114, 0.39);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(114, 114, 114, 0.15);
+}
