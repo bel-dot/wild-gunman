@@ -28,8 +28,8 @@ li {
     margin-bottom: 10px;
 } 
 
-div > ul {
-    padding-right: 10px;
+div > ul {    
+    padding-right: 20px;
     padding-left: 50px;
 }
 
@@ -68,6 +68,7 @@ li ul li {
     padding-left: 50px;
     margin-right: 20px;
     margin-left: -40px;
+    margin-bottom: 10px;
     background-size: 40px 40px;
     background-position: 5px 0px;
 }
