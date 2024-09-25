@@ -1,0 +1,53 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+}
+
+body {
+    background: url('https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input, select, textarea{
+    background-color: black;
+}
+
+label, input, select, textarea {
+    width: 200px;
+    float: center;
+    margin-bottom: 1em;
+}
+
+label {
+    padding-right: 1em;
+}
+
+button {
+    background-color: black;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.columns div input {
+    width: auto;
+}
+
+fieldset {
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+legend {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
+    margin: 0px 1em;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Lab 5. Task 3.</title>
+    </head>
+    <body>
+        <header>
+            <audio controls autoplay>
+                <source src="thrash.mp3" type="audio/mpeg">
+            </audio>
+        </header>
+        <main>
+            <div>
+                <h1>Масовий збирач інформації</h1>
+                <form method="get">
+                    <fieldset>
+                        <legend>Власні дані</legend>
+                        <label>Призвіще:</label>
+                        <input type="text" name="fname" value="Іванов" placeholder="Іванов" required tabindex="1">
+                        <br>
+                        <label>Ім'я:</label>
+                        <input type="text" name="sname" value="Іван" placeholder="Іван" required tabindex="2">
+                        <br>
+                        <label>По-батькові:</label>
+                        <input type="text" name="tname" value="Іванович" placeholder="Іванович" required tabindex="3">
+                        <br>
+                        <label>E-mail:</label>
+                        <input type="email" name="email" value="ivan@ukr.net" placeholder="ivan@ukr.net" pattern=".*@.*\..*"
+                            autocomplete="off" required tabindex="4">
+                        <br>
+                        <label>Номер телефону (повний, тільки український):</label>
+                        <input type="tel" name="telephone" pattern="\+380\d{9,}" value="+380666999228" placeholder="+380666999228"
+                            required tabindex="5">
+                        <br>
+                        <label>Дата народження</label>
+                        <input type="date" name="birthdate" value="11.09.2001" required tabindex="6">
+                        <br>
+                        <label>Опис себе:</label>
+                        <textarea name="about" tabindex="7">Я Іван.</textarea>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Збираю ще більше інформації про тебе ха-ха</legend>
+                        <label>Пароль від Google аккаунту:</label>
+                        <input type="password" name="password" value="C0ckSuck3r"
+                            pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])([^\s]){6,}" required tabindex="8">
+                        <div class="columns">
+                            <div>
+                                <label>Твоя стать</label>
+                                <br>
+                                <label>Чоловік</label>
+                                <input type="radio" value="male" name="choice" tabindex="9">
+                                <br>
+                                <label>Жінка</label>
+                                <input type="radio" value="female" name="choice" tabindex="10">
+                                <br>
+                                <label>Не знаю</label>
+                                <input type="radio" value="idk" name="choice" tabindex="11">
+                            </div>
+                            <div>
+                                <label>ПК чи Консоль?</label>
+                                <br>
+                                <label>ПК</label>
+                                <input type="radio" value="PC" name="choice2" tabindex="12">
+                                <br>
+                                <label>Консоль</label>
+                                <input type="radio" value="Console" name="choice2" tabindex="13">
+                                <br>
+                                <label>Мобільний геймінг</label>
+                                <input type="radio" value="Mobile" name="choice2" checked tabindex="14">
+                            </div>
+                            <div>
+                                <label>Твої гендери:</label>
+                                <br>
+                                <label>Чоловік</label>
+                                <input type="checkbox" name="gender" value="male" tabindex="15">
+                                <br>
+                                <label>Жінка</label>
+                                <input type="checkbox" name="gender" value="female" tabindex="16">
+                                <br>
+                                <label>Трансгендер</label>
+                                <input type="checkbox" name="gender" value="trans" tabindex="17">
+                                <br>
+                                <label>Кавун</label>
+                                <input type="checkbox" name="gender" value="watermelon" tabindex="18">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            Щось студентське
+                        </legend>
+                        <div>
+                            <label>Твій факультет:</label>
+                            <select name="faculty" tabindex="19">
+                                <option value="law">Юрфак</option>
+                                <option value="math">Матфак</option>
+                                <option selected value="computer">ІФТКН</option>
+                                <option value="biology">ІБХБ</option>
+                                <option value="architect">Будфак</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>В яких корпусах вчишся?</label>
+                            <select multiple name="campus" tabindex="20">
+                                <option value="8">Корпус №8</option>
+                                <option value="9">Корпус №9</option>
+                                <option value="5">Корпус №5</option>
+                                <option value="2">Корпус №2</option>
+                                <option value="3">Корпус №3</option>
+                                <option value="7">Корпус №7</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Яка спеціальність?</label>
+                            <select name="specialty" tabindex="21">
+                                <optgroup label="ІФТКН">
+                                    <option value="SE">ІПЗ</option>
+                                    <option value="CE">КІ</option>
+                                    <option value="CS">КН</option>
+                                </optgroup>
+                                <optgroup label="ІБХБ">
+                                    <option value="biology">Біологія</option>
+                                    <option value="NS">Природничі науки</option>
+                                    <option value="BE">Біоінженерія</option>
+                                </optgroup>
+                                <optgroup label="Матфак">
+                                    <option value="math">Математика</option>
+                                    <option value="PM">Прикладна математика</option>
+                                    <option value="SA">Системний аналіз</option>
+                                </optgroup>
+                                <optgroup label="Юрфак">
+                                    <option value="architect">Архітектура</option>
+                                    <option value="building">Будівництво</option>
+                                    <option value="art">Мистецвто</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            Щось ще
+                        </legend>
+                        <div>
+                            <label>З якого бразуеру сидиш?</label>
+                            <input list="browsers" name="browser" tabindex="22">
+                            <datalist id="browsers">
+                                <option value="firefox">Firefox</option>
+                                <option value="chrome">Chrome</option>
+                                <option value="edge">Edge</option>
+                                <option value="brave">Brave</option>
+                                <option value="opera">Opera</option>
+                            </datalist>
+                        </div>
+                        <div>
+                            <label>Залий якійсь смішні аудіо-мемчики</label>
+                            <input type="file" accept="audio/*" multiple tabindex="23">
+                        </div>
+                    </fieldset>
+                    <br>
+                    <button type="submit" tabindex="24">Відправити в пентагон</button>
+                    <button type="reset" tabindex="25">Давай по новій, Міша!</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
