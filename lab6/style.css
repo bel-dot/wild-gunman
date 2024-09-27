@@ -1,0 +1,68 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100px;
+    width: auto;
+    background-color: black;
+}
+
+.tasks-container {
+    display: inline-block;
+}
+
+.tasks {
+    position: absolute;
+    right: 0;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    float: right;
+    list-style: none;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+}
+
+.tasks li a {
+    text-decoration-line: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.tasks li a:hover {
+    color: black;
+    background-color: white;
+}
+
+.dancing video {
+    width: 960px;
+    height: 720px;
+}
+
+.dancing {
+    display: block;
+    margin: 105px auto;
+    width: 960px;
+    height: 720px;
+}
