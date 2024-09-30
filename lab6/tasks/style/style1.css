@@ -1,0 +1,25 @@
+.columns {
+    position: absolute;
+    top: 105px;
+    column-count: 3;
+    column-gap: 35px;
+    column-rule-width: 5px;
+    column-rule-color: red;
+    column-rule-style:dotted;
+}
+
+.image {
+    float: right;
+    width: 200px;
+    margin-inline-start: 10px;
+    margin-inline-end: 20px;
+    clear: right;
+}
+
+
+.image-left {
+    float: left;
+    width: 200px;
+    margin-inline-start: 10px;
+    margin-inline-end: 20px;
+}
