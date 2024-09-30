@@ -1,8 +1,26 @@
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
 .blocks-container {
     position: absolute;
     top: 105px;
     left: 15%;
     right: 10%;
+}
+
+.image {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    right: 0;
+    z-index: -1;
+}
+
+.image img {
+    width: 1920px;
+    height: 1080px;
 }
 
 .blocks-container div {
