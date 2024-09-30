@@ -1,6 +1,7 @@
 .blocks-container {
     position: absolute;
     top: 105px;
+    left: 15%;
     width: 100%;
 }
 
@@ -8,8 +9,8 @@
     display: block;
     float: left;
     width: 300px;
-    max-height: 200px;
-    margin: 150px 100px;
+    height: 200px;
+    margin: 150px 50px;
     padding: 10px;
 }
 
@@ -27,6 +28,7 @@ p {
 
 .block-1 {
     border-radius: 20px;
+    clear: left;
 }
 
 .block-2 {
@@ -44,6 +46,7 @@ p {
 .block-4 {
     border-color: gray lightgray gray lightgray;
     border-radius: 200px / 50px;
+    clear: left;
 }
 
 .block-5 {
@@ -56,7 +59,33 @@ p {
     border-bottom-right-radius: 100%;
 }
 
+.block-7, .block-8, .block-9, .block-10, .block-11, .block-12 {
+    border: double gray 20px; 
+}
+
 .block-7 {
-    border: double gray 16px; 
-    border-image: url("../../img/BelDot.png");
+    border-image: url("../../img/border.png") 125;
+    border-image-width: 25px;
+    clear: left;
+}
+
+.block-8 {
+    border-image: url("../../img/border.png") 80 / 20px round;
+}
+
+.block-9 {
+    border-image: url("../../img/border.png") 160 round;
+}
+
+.block-10 {
+    border-image: url("../../img/border-2.png") 70 / 20px;
+    clear: left;
+}
+
+.block-11 {
+    border-image: url("../../img/border-2.png") 50 / 15px round;
+}
+
+.block-12 {
+    border-image: url("../../img/border-2.png") 55 / 15px;
 }
