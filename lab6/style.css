@@ -2,15 +2,19 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
+    top: 0px;
+    right: 0px;
+    left: 0px;
     height: 100px;
-    width: auto;
+    width: 100%;
     background-color: black;
 }
 
