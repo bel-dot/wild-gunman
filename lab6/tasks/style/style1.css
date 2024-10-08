@@ -12,7 +12,7 @@
     float: right;
     width: 200px;
     margin-inline-start: 10px;
-    margin-inline-end: 20px;
+    margin-inline-end: 30px;
     clear: right;
 }
 
@@ -21,5 +21,5 @@
     float: left;
     width: 200px;
     margin-inline-start: 10px;
-    margin-inline-end: 20px;
+    margin-inline-end: 30px;
 }
