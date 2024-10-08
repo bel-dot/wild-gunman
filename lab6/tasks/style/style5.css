@@ -1,0 +1,70 @@
+main {
+    position: absolute;
+    top: 105px;
+    left: 15%;
+    right: 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+main div {
+    margin: 20px;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+}
+
+main div img {
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    clip-path: circle();
+}
+
+.block-1 {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2d9b1f+0,e8e82e+22,4030f2+67,edc02f+95 */
+    background: linear-gradient(45deg, rgb(45, 155, 31) 0%, rgb(232, 232, 46) 22%, rgb(64, 48, 242) 67%, rgb(237, 192, 47) 95%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.block-2 {
+    background-image: 
+        linear-gradient(45deg, green 15%, transparent 25%, transparent 75%, orange 75%, blue 100%),
+        linear-gradient(45deg, yellow 15%, transparent 25%, transparent 75%, purple 75%, orange 100%);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px;
+    background-repeat: repeat;
+}
+
+.block-3 {
+    background-image: 
+        repeating-linear-gradient(to right, green 0, white 50px, transparent 50px, transparent 100px),
+        repeating-linear-gradient(to right, transparent 0, blue 50px, yellow 100px);
+}
+
+.block-4 {
+    background-image:
+        linear-gradient(140deg, transparent 65%, yellow 65%, yellow 100%),
+        linear-gradient(to right top, green 25%, transparent 25%, transparent 100%),
+        linear-gradient(to top, white 0%, transparent 100%),
+        linear-gradient(to right, orange 0%, blue 100%);
+}
+
+.block-5 {
+    background-image:
+        repeating-linear-gradient(160deg, 
+        rgb(128 0 128 / 50%) 0,
+        rgb(255 0 0 / 50%) 30px,
+        rgb(255 255 0 / 50%)60px, 
+        rgb(0 255 0 / 50%) 90px, 
+        rgb(0 0 255 / 50%)120px, 
+        rgb(128 0 128 / 50%) 150px),
+        repeating-linear-gradient(200deg, 
+        rgb(128 0 128 / 50%) 0,
+        rgb(255 0 0 / 50%) 30px,
+        rgb(255 255 0 / 50%)60px, 
+        rgb(0 255 0 / 50%) 90px, 
+        rgb(0 0 255 / 50%)120px, 
+        rgb(128 0 128 / 50%) 150px),
+        repeating-linear-gradient(45deg, purple 0, red 50px,yellow 100px, green 150px, blue 200px, purple 250px);
+}
