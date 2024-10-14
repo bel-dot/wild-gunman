@@ -1,0 +1,37 @@
+div {
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    border: 5px solid black;
+    padding: 10px;
+}
+
+.block-1 {
+    top: 10px;
+    left: 10px;
+}
+
+.block-2 {
+    top: 10px;
+    left: 560px;
+}
+
+.block-3 {
+    top: 160px;
+    left: 10px;
+}
+
+.block-4 {
+    top: 160px;
+    left: 560px;
+}
+
+.block-1, .block-4 {
+    background-color: blue;
+    color: white;
+}
+
+.block-2, .block-3 {
+    background-color: green;
+    color: black;
+}
