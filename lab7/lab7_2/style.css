@@ -1,0 +1,50 @@
+div {
+    position: absolute;
+    border: 5px solid black;
+    padding: 10px;
+}
+
+.block2-1, .block2-2 {
+    visibility: hidden;
+    width: 450px;
+    height: 400px;
+    background-color: blue;
+    color: white;
+}
+
+.block1-1, .block1-2 {
+    width: 400px;
+    height: 70px;
+    background-color: green;
+    color: black;
+}
+
+.block1-1 {
+    top: 330px;
+    left: 10px;
+}
+
+.block1-2 {
+    top: 330px;
+    left: 470px;
+}
+
+
+.block2-1 {
+    top: 10px;
+    left: 450px;
+}
+
+.block2-2 {
+    top: 10px;
+    left: 950px;
+}
+
+.block1-1:hover ~ .block2-1 {
+    visibility: visible;
+}
+
+.block1-2:hover ~ .block2-2 {
+    visibility: visible;
+}
+
