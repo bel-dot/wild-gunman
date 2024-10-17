@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <audio controls autoplay>
+            <source src="lune.mp3" type="audio/mpeg">
+        </audio>
+        <div class="form-block">
+            <span class="header-wrapper">
+                <h1 class="header"></h1>
+            </span>
+            <form action="GET">
+                <label for="login">Login
+                    <input type="text" id="login">
+                </label>
+                <label for="email" class="reset">Email
+                    <input type="email" id="email">
+                </label>
+                <label for="password">Password
+                    <input type="password" id="password">
+                </label>
+                <label for="r-password" class="reset">Repeat Password
+                    <input type="password" id="r-password">
+                </label>
+                <label for="fname">First Name
+                    <input type="text" id="fname">
+                </label>
+                <label for="lname" class="reset">Last Name
+                    <input type="text" id="lname">
+                </label>
+                <label for="about">About me
+                    <textarea id="about"></textarea>
+                </label>
+                <div class="buttons">
+                    <button type="submit" class="submit-button">OK</button>
+                    <button type="reset" class="reset-button">RESET</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

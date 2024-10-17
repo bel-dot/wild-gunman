@@ -1,0 +1,210 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    color: white;
+}
+
+label, button {
+    font-size: 18px;
+}
+
+input, textarea {
+    color: black;
+    font-size: 16px;
+    margin: 10px 0px;
+    box-sizing: border-box;
+}
+
+
+.form-block {
+    width: 620px;
+    height: 550px;
+    border: 20px solid #868686;
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    background-image: url(https://media2.giphy.com/media/1jkSrf7GjwFwE5MJ73/200w.gif?cid=6c09b9525bue6fwipeatm2h7jckzb4q8yswloehlq301m0vf&ep=v1_gifs_search&rid=200w.gif&ct=g);
+    background-size: 100%;
+    background-position: center;
+}
+
+form {
+    width: 620px;
+    margin-left: 5%;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    color: #7d21b3;
+    font-weight: 700;
+    font-style: italic;
+    margin: 20px;
+}
+
+.header::first-letter {
+    color: pink;
+    font-size: 50px;
+}
+
+.header::after {
+    position: absolute;
+    content: " ";
+    background: red;
+    width: 400px;
+    height: 3px;
+    top: 100%;
+    left: 15%;
+}
+
+.header::before {
+    content: "Заповніть форму";
+}
+
+.header-wrapper:hover > .header::before {
+    content: "Ми вдячні вам";
+}
+
+.header-wrapper:hover > .header::after {
+    background: lime;
+}
+
+.header-wrapper:hover::after, .header-wrapper:hover::before {
+    visibility: hidden;
+}
+
+.header-wrapper::before {
+    position: absolute;
+    content: " ";
+    background: red;
+    width: 170px;
+    height: 2px;
+    top: 50%;
+}
+
+.header-wrapper::after {
+    position: absolute;
+    content: " ";
+    background: red;
+    width: 170px;
+    height: 2px;
+    top: 50%;
+    right: 0;
+}
+
+.header-wrapper {
+    position: relative;
+}
+
+label {
+    float: left;
+    margin: 10px;
+}
+
+label::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+input {
+    width: 250px;
+    height: 34px;
+}
+
+input, textarea {
+    display: block;
+    opacity: 0.6;
+    font-weight: 700;
+    border-radius: 10px;
+    text-indent: 20px;
+}
+
+textarea {
+    width: 540px;
+    height: 50px;
+    resize: none;
+}
+
+input::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+button {
+    float: right;
+    margin: 5px;
+    width: 130px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-right: 20px;
+}
+
+.reset-button {
+    border: 3px solid #e64a19;
+    color: #e64a19;
+}
+
+.reset-button:hover {
+    border: 3px #e64a19;
+    color: white;
+    background-color: #e64a19;
+    border-radius: 15px;
+}
+
+.reset-button:active {
+    border: 3px #ecfd00;
+    background-color: #a02904;
+    border-radius: 25px;
+    position: relative;
+}
+
+.submit-button {
+    border: 3px solid #0097a7;
+    color: #0097a7;
+}
+
+.submit-button:hover {
+    border: 3px #0097a7;
+    color: white;
+    background-color: #0097a7;
+    border-radius: 15px;
+}
+
+.submit-button:active {
+    border: 3px #ecfd00;
+    background-color: #014950;
+    border-radius: 25px;
+    position: relative;
+}
+
+#login:hover, #email:hover, #fname:hover, #lname:hover {
+    border-bottom: 4px solid #fbff00;
+}
+
+#login:focus, #email:focus, #fname:focus, #lname:focus {
+    border-bottom: 4px solid #ffa600;
+}
+
+#password:hover, #r-password:hover {
+    border-bottom: 4px #1eff00;
+}
+
+#password:focus, #r-password:focus {
+    border-bottom: 4px #00ffea;
+}
+
+#about:hover {
+    box-shadow: 0 0 10px 10px rgba(233, 27, 154, 0.6);
+}
+
