@@ -17,6 +17,10 @@ input, textarea {
     box-sizing: border-box;
 }
 
+textarea::first-line {
+    color: red;
+}
+
 
 .form-block {
     width: 620px;

@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <audio controls autoplay>
+        <audio controls autoplay tabindex="0">
             <source src="lune.mp3" type="audio/mpeg">
         </audio>
         <div class="form-block">
@@ -14,29 +14,29 @@
             </span>
             <form action="GET">
                 <label for="login">Login
-                    <input type="text" id="login">
+                    <input type="text" id="login" value="" tabindex="1" required>
                 </label>
                 <label for="email" class="reset">Email
-                    <input type="email" id="email">
+                    <input type="email" id="email" value="" tabindex="2" required>
                 </label>
                 <label for="password">Password
-                    <input type="password" id="password">
+                    <input type="password" id="password" value="" tabindex="3" required>
                 </label>
                 <label for="r-password" class="reset">Repeat Password
-                    <input type="password" id="r-password">
+                    <input type="password" id="r-password" value="" tabindex="4" required>
                 </label>
                 <label for="fname">First Name
-                    <input type="text" id="fname">
+                    <input type="text" id="fname" value="" tabindex="5">
                 </label>
                 <label for="lname" class="reset">Last Name
-                    <input type="text" id="lname">
+                    <input type="text" id="lname" value="" tabindex="6">
                 </label>
                 <label for="about">About me
-                    <textarea id="about"></textarea>
+                    <textarea id="about" value="" tabindex="7"></textarea>
                 </label>
                 <div class="buttons">
-                    <button type="submit" class="submit-button">OK</button>
-                    <button type="reset" class="reset-button">RESET</button>
+                    <button type="submit" class="submit-button" tabindex="9">OK</button>
+                    <button type="reset" class="reset-button" tabindex="8">RESET</button>
                 </div>
             </form>
         </div>
