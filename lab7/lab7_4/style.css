@@ -1,0 +1,142 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration-line: none;
+}
+
+.hor-menu-wrapper {
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.hor-menu-item {
+    float: right;
+}
+
+.hor-menu-item:nth-child(3) {
+    clear: left;
+}
+
+.hor-menu-item:nth-child(3):hover .hr-submenu {
+    visibility: inherit;
+}
+
+.hor-menu-item:hover > a {
+    background-color: rgb(51, 153, 51);
+}
+
+.hor-menu-item > a:focus {
+    background-color: rgb(51, 153, 51);
+}
+
+
+.hor-menu-item a {
+    display: block;
+    background-color: gray;
+    padding: 10px 20px;
+}
+
+.hr-submenu {
+    visibility: hidden;
+    position: fixed;
+    top: 63px;
+    right: 135px;
+
+}
+
+.hr-submenu-item a {
+    background-color: darkgray;
+    border-bottom: 2px solid whitesmoke;
+    color: white
+}
+
+.hr-submenu-item:nth-child(2):hover .hr-subsubmenu {
+    visibility: inherit;
+}
+
+.hr-submenu-item a:hover {
+    background-color: rgb(51, 153, 51);
+}
+
+.hr-submenu-item a:focus {
+    background-color: rgb(51, 153, 51);
+}
+
+.hr-subsubmenu {
+    visibility: hidden;
+    position: fixed;
+    top: 104px;
+    right: 268px;
+}
+
+.hr-subsubmenu-item a {
+    background-color: lightgray;
+    color: black;
+}
+
+.vert-menu-wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.vert-menu {
+    float: left;
+}
+
+.vert-menu-item {
+    float: top;
+}
+
+.vert-menu-item a {
+    display: block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+    margin-bottom: 1px;
+    background-color: rgb(68, 70, 196);
+    color: white;
+}
+
+.vert-menu-item > a img {
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+.vert-menu-item a:hover {
+    background-color: darkgray;
+}
+
+.vert-menu-item a:focus {
+    background-color: darkgray;
+}
+
+.vert-menu-item:nth-child(2) > a:focus + .vr-submenu {
+    visibility: inherit;
+}
+
+.vr-submenu {
+    visibility: hidden;
+    position: fixed;
+    left: 230px;
+    top: 83px;
+}
+
+.vr-submenu-item > a {
+    background-color: rgb(112, 114, 241);
+}
+
+.vr-submenu-item:nth-child(2):hover .vr-subsubmenu {
+    visibility: inherit;
+    max-height: 1000px;
+}
+
+.vr-subsubmenu {
+    visibility: hidden;
+    max-height: 0px;
+}
