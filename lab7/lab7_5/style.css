@@ -1,0 +1,78 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: gray;
+}
+
+.arrows {
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(128, 128, 128, 0.5);
+    top: 200px;
+    left: 45px;
+    height: 50px;
+    box-shadow: 0 0 3px 1px black;
+}
+
+.arrows img {
+    filter: invert(100%);
+    z-index: 4;
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.cloud-container {
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    z-index: 2;
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    color: darkgray;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 500px;
+    text-indent: 10px;
+    box-shadow: 12px 12px 40px 1px black;
+}
+
+.cloud-container img {
+    position: fixed;
+    top: 150px;
+    left: 18%;
+    width: 35%;
+    height: 20%;
+}
+
+.temperatures {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    top: 33%;
+    left: 25%;
+    background-color: darkgray;
+    padding-top: 80px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    vertical-align: text-bottom;
+    box-shadow: 10px 5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.temperatures span {
+    float: left;
+    margin-right: 20px;
+    line-height: 5px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.temperatures span p {
+    font-weight: normal;
+    font-size: 16px;
+    color: gray;
+}
