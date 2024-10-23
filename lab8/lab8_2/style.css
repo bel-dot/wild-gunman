@@ -151,11 +151,11 @@ footer {
 @media all and (max-width:768px) {
 
     .works-photos {
-        justify-content: center;
+        justify-content: stretch;
     }
 
     .works-photos img {
-        flex: 0 1 calc(33% - 10px);
+        flex-basis: calc(50% - 10px);
     }
 
     .specialty-item {
