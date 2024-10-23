@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <title>Welcome to Krusty Krab.</title>
+    </head>
+    <body>
+        <header>
+            <div class="audio-player">
+                <audio id="myAudio" src="music.mp3" loop preload muted></audio>
+                <a class="mute-button fas fa-volume-mute"></a>
+            </div>
+            <img src="img/logo.png">
+            <a class="burger-menu-button-container" href="#">
+                <span class="burger-menu-button" href="#"> </span>
+            </a>
+            <div class="fillout"></div>
+            <div class="burger-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Our food</a>
+                <a href="#">Contact us</a>
+                <div class="socials">
+                    <a href="#" class="fab fa-facebook"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="food-container">
+                <div class="food-item">
+                    <img src="https://static.wikia.nocookie.net/clubspongebob/images/b/b6/Krabby_Patty_Transparent.png/revision/latest?cb=20190116164247">
+                    <h2>The legendary krabby patty</h2>
+                    <h3>3.00$</h3>
+                </div>
+                <div class="food-item">
+                    <img src="https://static.wikia.nocookie.net/clubspongebob/images/b/b6/Krabby_Patty_Transparent.png/revision/latest?cb=20190116164247">
+                    <h2>The legendary krabby patty</h2>
+                    <h3>3.00$</h3>
+                </div>
+                <div class="food-item">
+                    <img src="https://static.wikia.nocookie.net/clubspongebob/images/b/b6/Krabby_Patty_Transparent.png/revision/latest?cb=20190116164247">
+                    <h2>The legendary krabby patty</h2>
+                    <h3>3.00$</h3>
+                </div>
+                <div class="food-item">
+                    <img src="https://static.wikia.nocookie.net/clubspongebob/images/b/b6/Krabby_Patty_Transparent.png/revision/latest?cb=20190116164247">
+                    <h2>The legendary krabby patty</h2>
+                    <h3>3.00$</h3>
+                </div>
+                <div class="food-item">
+                    <img src="https://static.wikia.nocookie.net/clubspongebob/images/b/b6/Krabby_Patty_Transparent.png/revision/latest?cb=20190116164247">
+                    <h2>The legendary krabby patty</h2>
+                    <h3>3.00$</h3>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; Krusty Krab Restaurant. All rights reserved.</p>
+        </footer>
+        <script>
+            const muteButton = document.querySelector('.mute-button');
+            const audio = document.getElementById('myAudio');
+
+            muteButton.addEventListener('click', () => {
+                if(audio.paused) audio.play(); 
+
+                audio.muted = !audio.muted;
+                muteButton.className = audio.muted ? 'mute-button fas fa-volume-mute' : 'mute-button fas fa-volume-down';
+            });
+        </script>
+    </body>
+</html>
