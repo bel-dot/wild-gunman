@@ -148,7 +148,116 @@ footer {
     font-size: 26px;
 }
 
+.burger-menu-button {
+    display: none;
+}
+
+#burger-menu {
+    position: fixed;
+    appearance: none;
+    top: 25px;
+    right: 63px;
+    width: 69px;
+    height: 69px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
 @media all and (max-width:768px) {
+    header {
+        position: sticky;
+        margin: 0;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 5;
+    }
+
+    .header-links {
+        display: flex;
+        position: fixed;
+        top: 100px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        overflow-y: hidden;
+        max-height: 0px;
+        background-color: white;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        transition: max-height 0.3s;
+    }
+
+    .header-links .button {
+        display: none;
+    }
+
+    header img {
+        margin-left: 20px;
+    }
+
+    .header-links a:hover {
+        background-color: whitesmoke;
+    }
+
+    .header-links .button:hover {
+        background-color: black;
+        outline: 2px solid gray;
+    }
+
+    .burger-menu-button {
+        position: sticky;
+        top: 30px;
+        right: 60px;
+        display: block;
+        padding: 30px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    #burger-menu:hover {
+        background-color: whitesmoke;
+    }
+
+    #burger-menu:active {
+        background-color: lightgray;
+    }
+
+    #burger-menu:checked ~ .header-links {
+        max-height: 1000px;
+        transition: max-height 1s;
+    }
+
+    .burger-menu-picture {
+        display: block;
+        background-color: black;
+        appearance: none;
+        width: 40px;
+        height: 5px;
+    }
+
+    .burger-menu-picture::before {
+        position: relative;
+        bottom: 15px;
+        display: block;
+        content: ' ';
+        background-color: black;
+        width: 40px;
+        height: 5px;
+    }
+
+    .burger-menu-picture::after {
+        position: relative;
+        top: 10px;
+        display: block;
+        content: ' ';
+        background-color: black;
+        width: 40px;
+        height: 5px;
+    }
 
     .works-photos {
         justify-content: stretch;
