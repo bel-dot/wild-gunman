@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+}
+
+.dancing iframe {
+    min-width: 256px;
+    min-height: 144px;
+    max-width: 1920px;
+    max-height: 1080px;
+    flex: 1 1 300px;
+}
+
+.dancing {
+    display: flex;
+    margin-top: 105px;
+    width: 100%;
+    height: calc(100% - 105px);
+    justify-content: center;
+}

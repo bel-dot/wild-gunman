@@ -1,0 +1,43 @@
+main {
+    font-size: 16px;
+    position: absolute;
+    top: 105px;
+    display: grid;
+    grid-template: repeat(12, 8%) / repeat(6, 15%);
+    grid-auto-flow: column;
+    width: 100%;
+    margin: 0 5%;
+}
+
+main div {
+    background-color: black;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+.a {
+    grid-row-end: span 12;
+}
+
+.b {
+    grid-row-end: span 6;
+}
+
+.c {
+    grid-row-end: span 4;
+}
+
+.d {
+    grid-row-end: span 3;
+}
+
+.e {
+    grid-row-end: span 2;
+}
+
+.f {
+    grid-row-end: span 1;
+}

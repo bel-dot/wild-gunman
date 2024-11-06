@@ -1,0 +1,28 @@
+main {
+    position: absolute;
+    top: 105px;
+    display: grid;
+    grid-template: calc(10% - 10px) 70% 10% calc(10% - 10px) / calc(20% - 10px) calc(80% - 10px);
+    width: 100%;
+    height: calc(100% - 105px);
+}
+
+main div {
+    background-color: black;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+}
+
+.header {
+    grid-column: 1 / span 2;
+}
+
+.nav {
+    grid-row: 2 / span 2;
+    grid-column: 1 / span 1;
+}
+
+.footer {
+    grid-column: 1 / span 2;
+}
