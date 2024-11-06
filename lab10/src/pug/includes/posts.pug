@@ -1,0 +1,28 @@
+.posts
+    - var n = 1;
+    mixin post(width, height)
+        .post
+            img(src='https://picsum.photos/' + width + '/' + height + '?random=' + n)
+            if block 
+                block 
+            else 
+                h3 Bro, there's nothing in here.
+                p Are you stupid or what?
+            a(href='#') Read more (there's nothing to read more)
+            - n++;
+    
+    +post(800, 600)
+        h3 The US President has been chosen!
+        p Who will it be, Trump or Kamala? IDK honestly.
+    +post(600, 400)
+        h3 Call Of Duty: Black Ops 6 is breaking records! 
+        p The game is very cool you should go buy game pass and play it now
+    +post(600, 400)
+        h3 IDK what to write here.
+        p Have a cooki lol, go play outside lol, l + ratio lol
+    +post(600, 400)
+        h3 Copy + paste = Copypaste
+        p fdshafljhadfvjhdgjhdflsjvhldsfjhvkjlsdfhvldsfhljhrljfhrdljsf
+    +post(600, 400)
+        h3 Copy + paste = Copypaste
+        p fdshafljhadfvjhdgjhdflsjvhldsfjhvkjlsdfhvldsfhljhrljfhrdljsf

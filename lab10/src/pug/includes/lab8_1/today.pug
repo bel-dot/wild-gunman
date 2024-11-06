@@ -1,0 +1,17 @@
+block today 
+    .today 
+        img(src='img/sunny.png')
+        span.temp +11
+            sup.gray #[sup o]C
+
+                
+        ul.list
+            mixin list-item(name, value)
+                li #[span.gray #{name}:] #{value}
+                
+            +list-item('Pressure', '761mm')
+            +list-item('Precipitation', '2%')
+            +list-item('Humidity', '65%')
+            +list-item('Wind', '1.2 m/s SE')
+
+            

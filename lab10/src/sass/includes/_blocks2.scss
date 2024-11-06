@@ -1,0 +1,48 @@
+.blocks {
+    display: grid;
+    grid-template: repeat(12, 8%) / repeat(6, 15%);
+    grid-auto-flow: column;
+    width: 80%;
+    height: 80%;
+
+    .block {
+        background-color: black;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        padding: 10px;
+        margin: 5px;
+
+        &:nth-child(1) { grid-row-end: span 12; }
+
+        @for $i from 2 through 3 {
+            &:nth-child(#{$i}) {
+                grid-row-end: span 6;
+            }
+        }
+            
+        @for $i from 4 through 6 {
+            &:nth-child(#{$i}) {
+                grid-row-end: span 4;
+            }
+        }
+
+        @for $i from 7 through 10 {
+            &:nth-child(#{$i}) {
+                grid-row-end: span 3;
+            }
+        }
+
+        @for $i from 11 through 16 {
+            &:nth-child(#{$i}) {
+                grid-row-end: span 2;
+            }
+        }
+
+        @for $i from 17 through 28 {
+            &:nth-child(#{$i}) {
+                grid-row-end: span 1;
+            }
+        }
+    }
+}

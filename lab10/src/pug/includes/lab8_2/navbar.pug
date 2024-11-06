@@ -1,0 +1,10 @@
+nav 
+    img(src='img/gramis.png' alt='logo')
+    input(type='checkbox')#burger-menu
+    label(for='burger-menu').burger-menu-button
+        span.burger-menu-picture
+    .header-links
+        each val in ['Home', 'About us', 'Our Works', 'Journal', 'Contact']
+            a(href='#')= val
+        a(href='index.html').button 🤍
+    

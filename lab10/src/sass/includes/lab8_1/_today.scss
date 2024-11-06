@@ -1,0 +1,21 @@
+.today {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid gray;
+    margin: 1% 5%;
+    width: 90%;
+
+    img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .temp {
+        font-size: 40px;
+        flex: 2 2 100px;
+    }
+
+    .list {
+        flex: 1 1 150px;
+    }
+}

@@ -1,0 +1,277 @@
+html {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+section {
+  margin: 10px 10%;
+  width: 80%;
+}
+
+nav {
+  height: 100px;
+  width: 80%;
+  margin: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 5px;
+  text-decoration-line: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+nav a:hover {
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+}
+nav img {
+  width: 100px;
+  height: 100px;
+}
+@media all and (max-width: 768px) {
+  nav {
+    position: sticky;
+    margin: 0;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 5;
+  }
+  nav .header-links {
+    display: flex;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow-y: hidden;
+    max-height: 0px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: max-height 0.3s;
+  }
+  nav .header-links .button {
+    display: none;
+  }
+  nav .header-links a:hover {
+    background-color: whitesmoke;
+  }
+  nav .header-links .button:hover {
+    background-color: black;
+    outline: 2px solid gray;
+  }
+  nav #burger-menu:checked ~ .header-links {
+    max-height: 1000px;
+    transition: max-height 1s;
+  }
+  nav img {
+    margin-left: 20px;
+  }
+}
+
+header {
+  background-color: whitesmoke;
+  width: 100%;
+  margin: 10px 0;
+}
+header .about {
+  width: 80%;
+  margin: 0 10%;
+  padding: 10px;
+}
+header h1 {
+  font-size: 30px;
+}
+header h4 {
+  font-weight: normal;
+  color: darkgray;
+}
+
+.button {
+  display: inline-block;
+  color: white;
+  padding: 10px;
+  background-color: black;
+  text-decoration-line: none;
+  border-radius: 5px;
+}
+.button:hover {
+  text-decoration-line: none;
+}
+
+.works-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.works .works-photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.works img {
+  margin: 5px;
+  flex: 1 1 calc(33.33% - 10px);
+}
+.works-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+.wdwd img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+  clip-path: circle();
+}
+.wdwd .specialties-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.wdwd .specialty-item {
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.news-container .news-item {
+  flex: 1 1 calc(50% - 40px);
+  padding: 20px;
+}
+.news-container .news-item img {
+  margin: 10px;
+  float: left;
+}
+
+@media all and (max-width: 768px) {
+  .works-photos {
+    justify-content: stretch;
+  }
+  .works-photos img {
+    flex-basis: calc(50% - 10px);
+  }
+  .specialty-item {
+    flex-basis: calc(50% - 40px);
+  }
+  .news-item {
+    flex-basis: 100%;
+  }
+}
+@media all and (max-width: 576px) {
+  .works-photos img {
+    flex-basis: 100%;
+  }
+  .specialty-item {
+    flex-basis: 100%;
+  }
+  .news-item {
+    display: flex;
+    flex-direction: column;
+  }
+}
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+footer .footer {
+  padding: 20px;
+}
+footer .footer a {
+  margin: 0 10px;
+}
+footer .footer .fab {
+  color: white;
+  font-size: 26px;
+}
+
+.burger-menu-button {
+  display: none;
+}
+
+#burger-menu {
+  position: fixed;
+  appearance: none;
+  top: 15px;
+  right: 63px;
+  width: 69px;
+  height: 69px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+@media all and (max-width: 768px) {
+  .burger-menu-button {
+    position: fixed;
+    top: 15px;
+    right: 60px;
+    display: block;
+    padding: 30px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+  }
+  .burger-menu-button::before {
+    position: relative;
+    bottom: 10px;
+    display: block;
+    content: " ";
+    background-color: black;
+    width: 40px;
+    height: 5px;
+    transition: all 0.3s ease;
+  }
+  .burger-menu-button::after {
+    position: relative;
+    top: 10px;
+    display: block;
+    content: " ";
+    background-color: black;
+    width: 40px;
+    height: 5px;
+    transition: all 0.3s ease;
+  }
+  .burger-menu-button .burger-menu-picture {
+    display: block;
+    background-color: black;
+    appearance: none;
+    width: 40px;
+    height: 5px;
+    position: relative;
+    bottom: 0;
+  }
+  #burger-menu:hover {
+    background-color: whitesmoke;
+  }
+  #burger-menu:active {
+    background-color: lightgray;
+  }
+  #burger-menu:checked + .burger-menu-button {
+    top: 20px;
+  }
+  #burger-menu:checked + .burger-menu-button > .burger-menu-picture {
+    display: none;
+  }
+  #burger-menu:checked + .burger-menu-button::before {
+    transform: translateY(10px) rotate(45deg);
+  }
+  #burger-menu:checked + .burger-menu-button::after {
+    transform: translateY(-14px) rotate(-45deg);
+  }
+}

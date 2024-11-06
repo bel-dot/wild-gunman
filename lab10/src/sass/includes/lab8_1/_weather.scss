@@ -1,0 +1,27 @@
+.weather-list {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1% 5%;
+        width: 90%;
+        border-bottom: 1px solid gray;
+
+        & > span {
+            flex: 2;
+        }
+
+        & > span:nth-child(1) {
+            font-weight: bold;
+        }
+    }
+
+    .temps {
+        margin-left: 30%;
+        flex: 2;
+    }
+}

@@ -1,0 +1,44 @@
+block works
+    section.works
+        .works-header
+            h3 Our awesome works
+            a(href='#').button Filter portfolio
+        .works-photos 
+            - var n = 1
+            while n < 10
+                img(src='https://picsum.photos/250/200?random=' + n)
+                - n++
+        .works-contact 
+            h1 Would you like to work with us?
+            a(href='#' class='button far fa-envelope')  Contact us
+
+block wdwd
+    section.wdwd
+        .wdwd-header
+            h3 What do we do
+            p Vestibulum sollicitudin, sem quis malesuada pharetra, ligula eros volutpat arcu, nec molestie sapien odio eget
+        .specialties-container
+            mixin item(image, name)
+                .specialty-item
+                    img(src=image)
+                    h3= name
+                    p Integer lacinia id enim ac consequat. Aenean pellentesque ac diam vestibulum auctor. Nulla auctor nec est eu porta.
+            
+            +item('https://png.klev.club/uploads/posts/2024-06/png-klev-club-kh3r-p-negr-lezhit-png-15.png', 'Game development')
+            +item('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs5IIr9t70dq8b3ctDhu4w-gKX4wrfULQHwA&s', 'Game publishment')
+            +item('https://xgm.guru/avatars/119302big.jpg?1653680087', 'Esports hosting')
+            +item('https://steamuserimages-a.akamaihd.net/ugc/1768202030121904678/00F114807EA8D36AF07839D63CC784338FCBE508/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', 'Drug dealing')
+
+
+block journal
+    section.journal
+        .journal-header
+            h3 From the journal
+            p Vestibulum sollicitudin, sem quis malesuada pharetra, ligula eros volutpat arcu, nec molestie sapien odio eget
+        .news-container
+            - for(var x = 1; x < 5; x++) 
+                .news-item 
+                    img(src='https://picsum.photos/200?random=' + x)
+                    h4.date Nov 5 2024 / Branding
+                    h3 Call Of Duty: Black Ops 6 Battle Pass
+                    p Integer lacinia id enim ac consequat. Aenean pellentesque ac diam vestibulum auctor. Nulla auctor nec est eu porta.

@@ -1,0 +1,13 @@
+.images
+    - var n = 1;
+    mixin image(width, height)
+        img(src='https://picsum.photos/' + width + '/' + height + '?random=' + n)
+        - n++;
+    
+    +image(200, 150)
+    +image(620, 460)
+    +image(200, 150)
+    +image(200, 300)
+    +image(200, 300)
+    - for(var x = 0; x < 5; x++)
+        +image(200, 150)

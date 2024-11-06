@@ -1,0 +1,12 @@
+@use "includes/navbar";
+@use "includes/lab8_1/today";
+@use "includes/lab8_1/weather";
+@use "includes/lab8_1/base8_1";
+
+header {
+    display: inline-block;
+    margin-top: 105px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

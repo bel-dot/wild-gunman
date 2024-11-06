@@ -1,0 +1,18 @@
+ul.weather-list
+    mixin weather-item(day, image, max, min)
+        li
+            span= day
+            img(src=image)
+            span.temps 
+                p= max
+                    sup o
+                p.gray= min
+                    sup o
+    
+    +weather-item('Today', 'img/sunny.png', '+10', '-4')
+    +weather-item('Thursday', 'img/cloud-sunny.png', '+7', '-1')
+    +weather-item('Friday', 'img/cloudy.png', '+8', '-1')
+    +weather-item('Saturday', 'img/rain.png', '+8', '+2')
+    +weather-item('Sunday', 'img/cloud-sunny.png', '+7', '+3')
+    +weather-item('Monday', 'img/cloudy.png', '+7', '0')
+    +weather-item('Tuesday', 'img/cloudy.png', '+7', '+3')

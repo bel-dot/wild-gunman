@@ -1,0 +1,17 @@
+nav
+    - var n = 1;
+    a(href='index.html')
+        img(src='img/logo.png' alt='logo')
+    input(type='checkbox')#menu
+    label(for='menu').menu-pic
+        - for(var x = 0; x < 3; x++)
+            span
+    ul
+        while n < 3
+            li
+                a(href='lab8_' + n + '.html' tabindex=n)= "Task 8-" + n++
+        - n = 1;
+        while n < 5
+            li
+                a(href='lab9_' + n + '.html' tabindex=n+2)= "Task 9-" + n++ 
+        
