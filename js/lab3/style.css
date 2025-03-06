@@ -1,0 +1,55 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+button {
+    border: 3px solid white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+#root {
+    width: 80%;
+    height: 60vh;
+    margin: 0 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.task {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.task input {
+    border: 3px solid white;
+    padding: 10px;
+}
+
+#month-input {
+    width: 150px;
+}
+
+#array-input {
+   width: 250px; 
+}
+
+#console-check {
+    position: absolute;
+    font-size: 32px;
+    bottom: 10%;
+    left: 40%;
+    visibility: hidden;
+}
