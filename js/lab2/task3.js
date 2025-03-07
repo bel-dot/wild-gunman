@@ -27,6 +27,7 @@ console.log(getVerdictWithTernary(56));
 console.log(getVerdictWithTernary(80));
 console.log(getVerdictWithTernary(99));
 console.log(getVerdictWithTernary(10000));
+console.log();
 
 function getSeasonWithIf(month) {
     if(month >= 1 && month <= 12) {
