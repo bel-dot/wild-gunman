@@ -3,8 +3,21 @@ const factorial = document.getElementById('factorial-input');
 const month = document.getElementById('month-input');
 const array = document.getElementById('array-input');
 const string = document.getElementById('string-input');
+const base = document.getElementById('base-input');
+const exponent = document.getElementById('exponent-input');
 
+// Button elements
+const sumButton = document.getElementById('sum-button');
+const factorialButton = document.getElementById('factorial-button');
+const monthButton = document.getElementById('month-button');
+const arrayButton = document.getElementById('array-button');
+const stringButton = document.getElementById('string-button');
+const exponentButton = document.getElementById('exponent-button');
+
+// Getting the span for showing up console check
 const consoleSpan = document.getElementById('console-check');
+
+// Function for showing console check
 function consoleCheck() {
     consoleSpan.style.visibility = 'visible';
 
@@ -13,6 +26,7 @@ function consoleCheck() {
     }, 3000);
 }
 
+// Task 1.
 function theFirst50Sum() {
     let a = 0, result = 0;
     while(a < 50) {
@@ -24,6 +38,7 @@ function theFirst50Sum() {
     consoleCheck();
 }
 
+// Task 2.
 function findFactorial() {
     const number = Number(factorial.value);
 
@@ -36,6 +51,7 @@ function findFactorial() {
     consoleCheck();
 }
 
+// Task 3.
 function returnMonth() {
     const monthNumber = Number(month.value);
     switch(monthNumber) {
@@ -82,6 +98,7 @@ function returnMonth() {
     consoleCheck();
 }
 
+// Task 4.
 function arrayEvenSum(arr) {
     let result = 0;
     for(const num of arr) {
@@ -94,6 +111,7 @@ function arrayEvenSum(arr) {
     consoleCheck();
 }
 
+// Task 5.
 const checkVowelsAmount = (str) => {
     const vowels = 'aoeiu';
     let amount = 0;
@@ -108,8 +126,23 @@ const checkVowelsAmount = (str) => {
     consoleCheck();
 }
 
+// Task 6.
 const exponentTheBase = (base, exponent) => {
     console.log(Math.pow(base, exponent));
     consoleCheck();
 }
 
+// Connecting buttons
+sumButton.addEventListener('click', theFirst50Sum);
+factorialButton.addEventListener('click', findFactorial);
+monthButton.addEventListener('click', returnMonth);
+arrayButton.addEventListener('click', () => {
+    const arr = array.value.split(' ').map(el => Number(el));
+    arrayEvenSum(arr);
+});
+stringButton.addEventListener('click', () => {
+    checkVowelsAmount(string.value);
+});
+exponentButton.addEventListener('click', () => {
+    exponentTheBase(base.value, exponent.value);
+});
