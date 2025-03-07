@@ -75,6 +75,9 @@ function returnMonth() {
         case 12:
             console.log('Грудень');
             break;
+        default:
+            console.log('Некоректний номер місяця');
+            break;
     } 
     consoleCheck();
 }
@@ -96,7 +99,7 @@ const checkVowelsAmount = (str) => {
     let amount = 0;
     
     for(const char of str) {
-        if(vowels.includes(char)) {
+        if(vowels.includes(char.toLowerCase())) {
             amount++;
         }
     }
