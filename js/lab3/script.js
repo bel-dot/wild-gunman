@@ -107,8 +107,9 @@ function arrayEvenSum(arr) {
         }
     }
     
-    console.log(result);
     consoleCheck();
+    console.log(result);
+    return result;
 }
 
 // Task 5.
@@ -122,14 +123,20 @@ const checkVowelsAmount = (str) => {
         }
     }
 
-    console.log(amount);
     consoleCheck();
+    console.log(amount);
+    return amount;
 }
 
 // Task 6.
 const exponentTheBase = (base, exponent) => {
-    console.log(Math.pow(base, exponent));
+    let result = base;
+    for(let i = 1; i < exponent; i++) {
+        result *= base;
+    }
     consoleCheck();
+    console.log(result);
+    return result;
 }
 
 // Connecting buttons
