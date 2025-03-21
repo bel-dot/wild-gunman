@@ -8,10 +8,22 @@ const energyBulbBtn = document.getElementById('energy-bulb-btn');
 const LEDBulbBtn = document.getElementById('led-bulb-btn');
 const brightnessBtn = document.getElementById('brightness-btn');
 
+let timeoutId;
+
 function switchLight() {
-    switchImg.className = switchImg.className === 'off' ? 'on' : 'off'; 
+    switchImg.className = switchImg.className === 'off' ? 'on' : 'off';
     bulbDiv.classList.toggle('enabled');
+    setTimer();
 }
+
+function setTimer() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+        switchImg.className = 'off';
+        bulbDiv.classList.remove('enabled');
+    }, 10000);
+}
+
 
 function setToEnergyBulb() {
     bulb.classList.remove('default');
@@ -21,6 +33,7 @@ function setToEnergyBulb() {
     bulbDiv.classList.remove('default');
     bulbDiv.classList.remove('led');
     bulbDiv.classList.add('energy');
+    setTimer();
 }
 
 function setToDefaultBulb() {
@@ -31,6 +44,7 @@ function setToDefaultBulb() {
     bulbDiv.classList.remove('energy');
     bulbDiv.classList.remove('led');
     bulbDiv.classList.add('default');
+    setTimer();
 }
 
 function setToLEDBulb() {
@@ -41,6 +55,7 @@ function setToLEDBulb() {
     bulbDiv.classList.remove('energy');
     bulbDiv.classList.remove('default');
     bulbDiv.classList.add('led');
+    setTimer();
 }
 
 function changeBrightness() {
