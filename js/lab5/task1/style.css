@@ -1,0 +1,94 @@
+body {
+    background-color: black;
+}
+
+#root {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#switch {
+    border: none;
+    background: transparent;
+    width: 200px;
+    height: 300px;
+    cursor: pointer;
+    grid-row-start: 2;
+}
+
+#switch img {
+    width: inherit;
+    height: inherit;
+}
+
+img.off {
+    content: url('assets/switch-off.png');
+}
+
+img.on {
+    content: url('assets/switch-on.png');
+}
+
+
+#bulb-div {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+div.default.enabled {
+    background: radial-gradient(yellow 0, transparent 75%);
+}
+
+div.energy.enabled, div.led.enabled {
+    background: radial-gradient(white 0, transparent 75%);
+}
+
+div.energy.enabled img, div.led.enabled img {
+    filter: brightness(0.8);
+}
+
+#bulb {
+    rotate: 180deg;
+    margin-top: -400px;
+}
+
+img.default {
+    content: url('assets/lightbulb.png');
+}
+
+img.energy {
+    content: url('assets/energy-saving.png');
+    filter: brightness(0.3);
+}
+
+img.led {
+    content: url('assets/led.png');
+    filter: brightness(0.3);
+}
+
+#bulb-list {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+#bulb-list button {
+    margin: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#bulb-list button:hover {
+    background-color: white;
+    color: black;
+}
