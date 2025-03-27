@@ -1,0 +1,69 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#root {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 5%;
+}
+
+#time-timer {
+    display: flex;
+    flex-direction: column;
+}
+
+#timer-div {
+    display: flex;
+}
+
+#time-timer * {
+    margin: 10px;
+}
+
+#current-time {
+    font-size: 3em;
+}
+
+#timer-div input, #timer-div button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+#timer-div button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calendar-table * {
+    border: 1px solid white;
+    text-align: center;
+}
+
+#selects-div *, #calendar input, #calendar button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+#calendar button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}

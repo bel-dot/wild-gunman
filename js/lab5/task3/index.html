@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>JS. Lab 5. Task 3.</title>
+    </head>
+    <body>
+        <div id="root">
+            <div id="time-timer">
+                <span id="current-time">Current time here.</span>
+                <h1>Таймер</h1>
+                <div id="timer-div">
+                    <input type="datetime-local" id="timer-date">
+                    <button type="button" id="timer-btn">Встановити таймер</button>
+                    <span id="time-left"></span>
+                </div>
+            </div>
+            <div id="calendar">
+                <span id="calendar-date"></span>
+                <table id="calendar-table" >
+                    <thead>
+                        <tr>
+                            <td>Нд</td>
+                            <td>Пн</td>
+                            <td>Вт</td>
+                            <td>Ср</td>
+                            <td>Чт</td>
+                            <td>Пт</td>
+                            <td>Сб</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="calendar-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="selects-div">
+                <select id="month-select"></select>
+                <select id="year-select"></select>
+                </div>
+                <input type="date" id="date-input">
+                <button type="button" id="date-btn">Порахувати час</button>
+                <span id="date-left" ></span>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
