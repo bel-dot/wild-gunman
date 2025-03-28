@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>JS. Lab 5. Task 4.</title>
+    </head>
+    <body>
+        <div id="root">
+            <fieldset>
+                <legend>Додавання продукту</legend>
+                <form id="add-product-form">
+                    <input type="text" name="name" value="" placeholder="Назва продукту">
+                    <input type="number" name="price" value="" min="0" placeholder="Ціна продукту">
+                    <input type="number" name="amount" value="" min="0" placeholder="К-ть продукту на складі">
+                    <button type="submit">Додати продукт</button>
+                </form>
+            </fieldset>
+            <fieldset>
+                <legend>Видалення продукту</legend>
+                <form id="delete-product-form">
+                    <input type="number" name="id" value="" min="0" placeholder="Ідентифікатор продукту">
+                    <button type="submit">Видалити продукт</button>
+                </form>
+            </fieldset>
+            <fieldset>
+                <legend>Редагування продукту</legend>
+                <form id="edit-product-form">
+                    <input type="number" name="id" value="" min="0" placeholder="Ідентифікатор продукту">
+                    <input type="number" name="price" value="" min="0" placeholder="Ціна продукту">
+                    <input type="number" name="amount" value="" min="0" placeholder="К-ть продукту на складі">
+                    <button type="submit">Редагувати продукт</button>
+                </form>
+            </fieldset>
+            <fieldset>
+                <legend>Пошук продукту</legend>
+                <form id="search-product-form">
+                    <input type="text" name="name" value="" placeholder="Назва продукту">
+                    <button type="submit">Знайти продукт</button>
+                </form>
+            </fieldset>
+            <fieldset>
+                <legend>Замовлення продукту</legend>
+                <form id="order-product-form">
+                    <input type="text" name="name" value="" placeholder="Ім'я замовника">
+                    <input type="text" name="product" value="" placeholder="Назва продукту">
+                    <input type="number" name="amount" value="" min="0" placeholder="К-ть продукту">
+                    <button type="submit">Замовити продукт</button>
+                </form>
+            </fieldset>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
