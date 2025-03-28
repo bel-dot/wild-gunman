@@ -6,7 +6,7 @@ const orderForm = document.getElementById('order-product-form');
 
 const products = new Map();
 const orderLog = new WeakMap();
-const users = new WeakSet();
+const orders = new WeakSet();
 let id = 0;
 
 addForm.addEventListener('submit', (event) => {
@@ -89,7 +89,7 @@ orderForm.addEventListener('submit', (event) => {
                 });
                 
                 orderLog.set(products.get(key), order.name);
-                users.add(order);
+                orders.add(order);
                 console.log(orderLog);
                 alert("Продукт успішно замовлено.");
             }
