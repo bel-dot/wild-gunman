@@ -1,0 +1,266 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+#sort-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sort-div button, #filter-div button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.25em;
+}
+
+#no-products-text {
+    margin-left: 300px;
+}
+
+#filter-div {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 10px;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    z-index: 1;
+}
+
+#filter-div button {
+    margin: 10px;
+}
+
+header {
+    float: left;
+    font-size: 1.25em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 50px;
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+    border: 3px solid white;
+    background-color: black;
+    animation-name: modal-appear;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier();
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.close-btn {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+input, button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+button {
+    cursor: pointer;
+    border: 3px solid white;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form * {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+#products-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 300px;
+    margin-right: 30px;
+}
+
+#products-list div {
+    margin: 10px;
+}
+
+.product-card {
+    position: relative;
+    width: 300px;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    animation-name: appear;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier();
+}
+
+
+@keyframes appear {
+    0% {
+        width: 150px;
+        opacity: 0;
+    }
+    
+    100% {
+        width: 300px;
+        opacity: 1;
+    }
+}
+
+@keyframes appear-buttons {
+    0% {
+        width: 50%;
+        opacity: 0;
+    }
+    
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes modal-appear {
+    0% {
+        top: -150px;
+        opacity: 0;
+    }
+    
+    100% {
+        top: 50px;
+        opacity: 1;
+    }
+}
+
+
+.product-id {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.product-card * {
+    margin: 5px;
+}
+
+.product-card img {
+    width: 200px;
+    height: 200px;
+}
+
+.card-controls {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    animation-name: appear-buttons;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier();
+}
+
+.card-controls button {
+    padding: 10px;
+    font-size: 1.25em;
+}
+
+#add-btn {
+    padding: 10px;
+    font-size: 1.5em;
+    align-self: center;
+}
+
+#toastey {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    padding: 10px;
+    background-color: black;
+    border: 3px solid white;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1276px ) {
+   #filter-div {
+    top: 200px;
+   } 
+}
+
+@media screen and (max-width: 768px) {
+    #root {
+        align-items: center;
+    }
+    
+    #sort-div {
+        flex-direction: column;
+    }
+    
+    #filter-div {
+        position: static;
+        border-left: 3px solid white;
+        margin-bottom: 10px;
+    }
+    
+    #products-list {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0 5%;
+    }
+    
+    #no-products-text {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modal {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #products-list {
+        width: 100%;
+        margin: 0;
+    }
+    
+    #products-list div {
+        margin: 0;
+    }
+}

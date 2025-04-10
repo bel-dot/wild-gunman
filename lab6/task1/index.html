@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>JS. Lab 6. Task 1.</title>
+    </head>
+    <body>
+        <div id="root">
+            <header id="sum-header">
+                Загальна вартість товарів: <span id="products-sum"></span> UAH
+            </header>
+            <div id="sort-div">
+                <button type="button" id="clear-sort">Відмінити сортування</button>
+                <button type="button" id="sort-by-price">Сортувати за ціною</button>
+                <button type="button" id="sort-by-date-added">Сортувати за датою додавання</button>
+                <button type="button" id="sort-by-date-updated">Сортувати за датою оновлення</button>
+            </div>
+            <div id="products-list">
+            </div>
+            <span id="no-products-text">
+                Наразі в списку немає товарів. Додайте новий товар.
+            </span>
+            <div id="filter-div">
+                <button type="button" id="clear-filters">Очистити фільтри</button>
+            </div>
+            <button type="button" id="add-btn">Додати товар</button>
+        </div>
+        <div class="modal" id="add-modal">
+            <div class="modal-header">
+                <h1>Додавання товару</h1>
+                <a class="close-btn" id="add-close">X</a>
+            </div>
+            <form id="add-form">
+                <input type="text" placeholder="Назва товару" id="add-name" required>
+                <input type="text" placeholder="Ціна товару в гривнях" id="add-price" pattern="\d+" required>
+                <input type="text" placeholder="Категорія товару" id="add-category" required>
+                <input type="text" placeholder="URL зображення товару" id="add-image">
+                <button type="submit">Додати товар</button>
+            </form>
+        </div>
+        <div class="modal" id="edit-modal">
+            <div class="modal-header">
+                <h1>Редагування товару</h1>
+                <a class="close-btn" id="edit-close">X</a>
+            </div>
+            <form id="edit-form">
+                <input type="text" placeholder="Назва товару" id="edit-name" required>
+                <input type="text" placeholder="Ціна товару в гривнях" id="edit-price" pattern="\d+" required>
+                <input type="text" placeholder="Категорія товару" id="edit-category" required>
+                <input type="text" placeholder="URL зображення товару" id="edit-image">
+                <button type="submit">Редагувати товар</button>
+            </form>
+        </div>
+        <span id="toastey">Test toast</span>
+        <script src="script.js"></script>
+    </body>
+</html>
