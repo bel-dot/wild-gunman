@@ -1,0 +1,112 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sort-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sort-div button {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 1.5em;
+}
+
+#tasks-list {
+    border: 1px solid white;
+}
+
+#add-form {
+    margin: 10px;
+}
+
+#add-form * {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+#add-form input {
+    border: 1px solid white;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+.task {
+    border: 1px solid white;
+    display: flex;
+    animation-name: appear;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier();
+}
+
+.task * {
+    padding: 10px;
+    font-size: 1.5em;
+    margin: 10px 5px;
+}
+
+.task input {
+    outline: none;
+    border: none;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.task-check {
+    width: 25px;
+}
+
+.task-check:checked + input {
+    text-decoration: line-through;
+}
+
+body, input, button {
+    background-color: black;
+    color: white;
+}
+
+button {
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+@media screen and (max-width: 598px) {
+    #add-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .task {
+        flex-wrap: wrap;
+    }
+    
+    .task input {
+        border-right: none;
+    }
+    
+    .task button {
+        flex: 1;
+    }
+}
