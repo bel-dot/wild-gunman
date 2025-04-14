@@ -1,7 +1,7 @@
 
 body {
   background: #000;
-  font-family: "PressStart2P";
+  font-family: "Press Start 2P";
 }
 
 
@@ -10,27 +10,25 @@ body {
 /*  display: none;*/
   box-sizing: border-box;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  top: 0;
+  left: 0;
+  display: none;
 
-  width: 800px;
-  height: 480px;
+  width: 100%;
+  height: 100%;
 
-  background: url(../img/main-background.png) no-repeat;
+  background-image: url(../img/main-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .game-menu__title {
   position: fixed;
   top: 15%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
-  font-size: 70px;
+  font-size: 140px;
   text-transform: uppercase;
   text-align: center;
 }
@@ -41,16 +39,14 @@ body {
   position: fixed;
   left: 50%;
   top: 70%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   padding: 0;
   border: 0;
   outline: 0;
 
-  font-family: "PressStart2P";
-  font-size: 20px;
+  font-family: "Press Start 2P";
+  font-size: 30px;
   text-transform: uppercase;
 
   background: transparent;
@@ -82,35 +78,29 @@ body {
 /*                              Main game screen style                       */
 
 .wrapper {
-  display: none;
+  display: block;
   position: fixed;
-  left: 50%;
-  top: 55%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  left: 0;
+  top: 0;
 
-  height: 750px;
-  width: 900px;
+  height: 100%;
+  width: 100%;
 
   box-sizing: border-box;
 }
 
 .game-screen {
-  display: none;
+  display: block;
   position: fixed;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  top: 15%;
+  left: 10%;
 
   box-sizing: border-box;
-  width: 800px;
-  height: 480px;
+  width: 80%;
+  height: 70%;
   overflow: hidden;
 
-  background: url(../img/background-dark.png) no-repeat;
+  background: url(../img/bg.png) no-repeat;
   background-size: cover;
 }
 /*                              End Main game screen style                   */
@@ -143,9 +133,7 @@ body {
   left: 57%;
   top: 36%;
 
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   z-index: 1;
 }
@@ -171,15 +159,15 @@ body {
 /*                              Game panels for scores style                 */
 .white-line {
   position: absolute;
-  left: 50px;
-  top: 10%;
+  left: 0px;
+  top: 79px;
   z-index: 700;
-  width: 800px;
-  border-bottom: 2px solid #fff;
+  width: 100%;
+  border: 1px solid #fff;
 }
 
 .game-panels {
-  display: none;
+  display: block;
 }
 
 .players-panel,
@@ -187,7 +175,7 @@ body {
 .score-panel {
   padding: 10px;
 
-  font-family: "PressStart2P";
+  font-family: "Press Start 2P";
   font-size: 25px;
   text-transform: uppercase;
   text-align: center;
@@ -197,28 +185,27 @@ body {
 .time-panel {
   position: absolute;
   left: 70%;
-  top: 2px;
+  top: 5px;
   z-index: 700;
 }
 
 .time-panel__gunman,
 .time-panel__you {
   font-family: "Digital-7";
-  font-size: 65px;
+  font-size: 60px;
+  line-height: 65px;
 }
 
 .time-panel__you  {
-  margin-bottom: 5px;
+  padding-bottom: 0px;
 }
 
 .players-panel {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 8%;
   box-sizing: border-box;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
   z-index: 700;
 }
 
@@ -227,8 +214,6 @@ body {
   padding: 10px;
   border: 2px solid #80d010;
 
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
   border-radius: 10px;
 }
 
@@ -243,10 +228,8 @@ body {
 .score-panel__score {
   position: absolute;
   left: 25%;
-  top: 85%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  top: 90%;
+  transform: translate(-50%, -50%);
   z-index: 700;
 
   box-sizing: border-box;
@@ -255,11 +238,9 @@ body {
 .score-panel__level {
   position: absolute;
   left: 70%;
-  top: 85%;
+  top: 90%;
   z-index: 700;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   box-sizing: border-box;
 }
@@ -272,9 +253,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   box-sizing: border-box;
   width: 800px;
@@ -288,9 +267,7 @@ body {
   top: 35%;
   left: 50%;
 
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   font-size: 50px;
   line-height: 70px;
@@ -307,7 +284,6 @@ body {
   z-index: 900;
   width: 130px;
   height: 260px;
-
 }
 
 .gunman-level-1 {
