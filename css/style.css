@@ -7,28 +7,27 @@ body {
 
 /*                              Game menu style                             */
 .game-menu {
-/*  display: none;*/
+  display: block;
   box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
 
   width: 100%;
   height: 100%;
 
-  background-image: url(../img/main-background.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url(../img/main-background.png) no-repeat;
+  background-size: contain;
+  background-position: 50% 0;
 }
 
 .game-menu__title {
   position: fixed;
   top: 15%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
-  font-size: 140px;
+  font-size: 70px;
   text-transform: uppercase;
   text-align: center;
 }
@@ -39,14 +38,14 @@ body {
   position: fixed;
   left: 50%;
   top: 70%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
   padding: 0;
   border: 0;
   outline: 0;
 
   font-family: "Press Start 2P";
-  font-size: 30px;
+  font-size: 20px;
   text-transform: uppercase;
 
   background: transparent;
@@ -78,13 +77,14 @@ body {
 /*                              Main game screen style                       */
 
 .wrapper {
-  display: block;
+  display: none;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%,-50%);
 
-  height: 100%;
-  width: 100%;
+  height: 750px;
+  width: 900px;
 
   box-sizing: border-box;
 }
@@ -92,12 +92,13 @@ body {
 .game-screen {
   display: block;
   position: fixed;
-  top: 15%;
-  left: 10%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 
   box-sizing: border-box;
-  width: 80%;
-  height: 70%;
+  width: 800px;
+  height: 480px;
   overflow: hidden;
 
   background: url(../img/bg.png) no-repeat;
@@ -133,9 +134,10 @@ body {
   left: 57%;
   top: 36%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
   z-index: 1;
+  text-align: center;
 }
 
 .message--fire {
@@ -150,7 +152,7 @@ body {
   left: 50%;
   top: 30%;
 
-  font-family: "PressStart2P";
+  font-family: "Press Start 2P";
   font-size: 30px;
   color: #fff;
 }
@@ -159,11 +161,11 @@ body {
 /*                              Game panels for scores style                 */
 .white-line {
   position: absolute;
-  left: 0px;
-  top: 79px;
+  left: 50px;
+  top: 10%;
   z-index: 700;
-  width: 100%;
-  border: 1px solid #fff;
+  width: 800px;
+  border-bottom: 2px solid #fff;
 }
 
 .game-panels {
@@ -185,27 +187,26 @@ body {
 .time-panel {
   position: absolute;
   left: 70%;
-  top: 5px;
+  top: 2px;
   z-index: 700;
 }
 
 .time-panel__gunman,
 .time-panel__you {
   font-family: "Digital-7";
-  font-size: 60px;
-  line-height: 65px;
+  font-size: 65px;
 }
 
 .time-panel__you  {
-  padding-bottom: 0px;
+  padding: 10px 0;
 }
 
 .players-panel {
   position: absolute;
   left: 50%;
-  top: 8%;
+  top: 10%;
   box-sizing: border-box;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   z-index: 700;
 }
 
@@ -228,7 +229,7 @@ body {
 .score-panel__score {
   position: absolute;
   left: 25%;
-  top: 90%;
+  top: 85%;
   transform: translate(-50%, -50%);
   z-index: 700;
 
@@ -238,9 +239,9 @@ body {
 .score-panel__level {
   position: absolute;
   left: 70%;
-  top: 90%;
+  top: 85%;
   z-index: 700;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
   box-sizing: border-box;
 }
@@ -253,7 +254,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
   box-sizing: border-box;
   width: 800px;
@@ -267,7 +268,7 @@ body {
   top: 35%;
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 
   font-size: 50px;
   line-height: 70px;
@@ -279,39 +280,40 @@ body {
 /*                              Gunman style                                 */
 .gunman {
   position: absolute;
-  left: 800px;
-  bottom: 85px;
+  left: 400px;
+  bottom: 150px;
   z-index: 900;
-  width: 130px;
-  height: 260px;
+  scale: 3;
+  width: 32px;
+  height: 64px;
 }
 
 .gunman-level-1 {
-  background: url(../img/gunman.png) 0 0;
-  animation: gunman-level-1__walk 1s steps(3) infinite;
+  background: url(../img/gunman.png) no-repeat;
+}
+
+.gunman-level-1__walk {
+  animation: gunman-level-1__walk 1s steps(3) infinite, gunman-walk 5s linear;
 }
 
 .gunman-level-1__standing {
-  background-position: -400px 0;
+  background-position: -100px 0;
 }
 
 .gunman-level-1__ready {
-  background-position: -808px 0;
+  background-position: -202px 0;
 }
 
 .gunman-level-1__shooting {
   animation: gunman-level-1__duel 0.5s step-start;
   animation-iteration-count: 1;
-  background-position: -940px 0;
-  width: 135px;
-  left: 340px;
+  background-position: -436px 0;
 }
 
 .gunman-level-1__death {
   animation: gunman-level-1__death 1s steps(4);
-  background-position: -1616px 0;
-  width: 128px;
-  left: 340px;
+  background-position: -406px 0;
+  width: 26px;
 }
 
 @keyframes gunman-level-1__walk {
@@ -319,37 +321,35 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: -390px 0;
+    background-position: -98px 0;
+  }
+}
+
+@keyframes gunman-walk {
+  from {
+    left: 850px;
+  }
+  to {
+    left: 400px;
   }
 }
 
 @keyframes gunman-level-1__duel {
   from {
-
+    background-position: -236px 0;
   }
   to {
-
+    background-position: -301px 0;
   }
 }
 
 @keyframes gunman-level-1__death {
   from {
-
+    background-position: -304px 0;
+    width: 32px;
   }
   to {
-
+    background-position: -434px 0;
+    width: 26px;
   }
 }
-
-
-.moving {
-  left: 340px;
-  transition: left 5s linear;
-}
-
-.standing {
-  left: 340px;
-  animation: none;
-}
-/*                              Gunman style                                 */
-
