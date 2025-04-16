@@ -284,12 +284,17 @@ body {
   bottom: 150px;
   z-index: 900;
   scale: 3;
-  width: 32px;
-  height: 64px;
+  background: url(../img/gunman.png) no-repeat;
+}
+
+.shootable {
+  cursor: url(../img/revolver.ico), pointer;
 }
 
 .gunman-level-1 {
-  background: url(../img/gunman.png) no-repeat;
+  background-position: 0 0;
+  width: 32px;
+  height: 64px;
 }
 
 .gunman-level-1__walk {
@@ -350,6 +355,69 @@ body {
   }
   to {
     background-position: -434px 0;
+    width: 26px;
+  }
+}
+
+.gunman-level-2 {
+  background-position: 0 -68px;
+  width: 32px;
+  height: 72px;
+}
+
+.gunman-level-2__walk {
+  animation: gunman-level-2__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-2__standing {
+  background-position: 0 -68px;
+}
+
+.gunman-level-2__ready {
+  background-position: -102px -68px;
+  width: 28px;
+}
+
+.gunman-level-2__shooting {
+  animation: gunman-level-2__duel 0.5s steps(4);
+  animation-iteration-count: 1;
+  background-position: -271px -68px;
+}
+
+.gunman-level-2__death {
+  animation: gunman-level-2__death 1s steps(2);
+  background-position: -239px -68px;
+  width: 28px;
+  height: 73px;
+}
+
+@keyframes gunman-level-2__walk {
+  from {
+    background-position: 0 -68px;
+  }
+  to {
+    background-position: -102px -68px;
+  }
+}
+
+@keyframes gunman-level-2__duel {
+  from {
+    background-position: -132px -68px;
+    width: 22px;
+  }
+  to {
+    background-position: -237px -68px;
+    width: 28px;
+  }
+}
+
+@keyframes gunman-level-2__death {
+  from {
+    background-position: -209px -68px;
+    width: 32px;
+  }
+  to {
+    background-position: -267px -68px;
     width: 26px;
   }
 }

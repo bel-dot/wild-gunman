@@ -17,6 +17,7 @@ const buttonStart = document.querySelector('.button-start-game'),
     timePanelGunman = document.querySelector('.time-panel__gunman'),
     timePanelPlayer = document.querySelector('.time-panel__you'),
     scorePanelNumber = document.querySelector('.score-panel__score_num'),
+    levelPanelNumber = document.querySelector('.score-panel__level_num'),
     gunman = document.querySelector('.gunman'),
     message = document.querySelector('.message'),
     introSound = new Audio('sfx/intro.m4a'),
@@ -30,9 +31,13 @@ const buttonStart = document.querySelector('.button-start-game'),
 
 
 function startGame() {
+    level = 1;
+    score = 0;
+    scorePanelNumber.textContent = score;
+    levelPanelNumber.textContent = level;
     gameMenu.style.display = 'none';
     timePanelGunman.textContent = (gunmanTime / 100).toFixed(2);
-    gunman.classList.toggle(`gunman-level-${level}`);
+    gunman.classList.add(`gunman-level-${level}`);
     setTimeout(() => {
         gameWrapper.style.display = 'block';
         moveGunman();
@@ -42,12 +47,47 @@ function startGame() {
 buttonStart.onclick = startGame;
 
 function restartGame() {
-
+    deathSound.pause();
+    foulSound.pause();
+    gameWrapper.style.display = 'none';
+    timePanelPlayer.textContent = '0.00';
+    buttonRestart.style.display = 'none';
+    gameScreen.classList.remove('game-screen--death');
+    gunman.classList.remove(`gunman-level-${level}__shooting`);
+    gunman.classList.remove(`gunman-level-${level}__standing`)
+    message.classList.remove('message--dead');
+    message.textContent = '';
+    setTimeout(() => {
+        gameWrapper.style.display = 'block';
+        moveGunman();
+    }, 500);
 }
+
+buttonRestart.onclick = restartGame;
 
 function nextLevel() {
-
+    winSound.pause();
+    timePanelPlayer.textContent = '0.00';
+    buttonNext.style.display = 'none';
+    gameWrapper.style.display = 'none';
+    gunman.classList.remove(`gunman-level-${level}__death`);
+    message.classList.remove('message--win');
+    message.textContent = '';
+    
+    gunman.classList.remove(`gunman-level-${level}`);
+    level++;
+    gunman.classList.add(`gunman-level-${level}`);
+    levelPanelNumber.textContent = level;
+    gunmanTime -= 30;
+    timePanelGunman.textContent = (gunmanTime / 100).toFixed(2);
+    reward += 500;
+    setTimeout(() => {
+        gameWrapper.style.display = 'block';
+        moveGunman();
+    }, 500);
 }
+
+buttonNext.onclick = nextLevel;
 
 function moveGunman() {
     introSound.currentTime = 0;
@@ -66,12 +106,20 @@ function prepareForDuel() {
     waitSound.currentTime = 0;
     waitSound.play();
     gunman.classList.toggle(`gunman-level-${level}__standing`)
+    gunman.classList.toggle('shootable');
 
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
         gunman.classList.toggle(`gunman-level-${level}__standing`)
         waitSound.pause();
         timeCounter();
     }, timeToWait);
+    
+    gunman.onclick = () => {
+        gunman.onclick = null;
+        gunman.classList.toggle('shootable');
+        clearTimeout(timeoutId);
+        playerShootsEarly();
+    };
 }
 
 function timeCounter() {
@@ -89,14 +137,17 @@ function timeCounter() {
             gunman.onclick = null;
             clearInterval(intervalId);
             gunman.classList.toggle(`gunman-level-${level}__ready`)
+            gunman.classList.toggle('shootable');
             gunmanShootsPlayer();
         }
     }, 10);
     gunman.onclick = () => {
+        gunman.onclick = null;
         message.classList.toggle('message--fire');
         clearInterval(intervalId);
         bonus = ((gunmanTime / 10) - Math.floor(playerTime / 10)) * 1000;
         gunman.classList.toggle(`gunman-level-${level}__ready`)
+        gunman.classList.toggle('shootable');
         playerShootsGunman();
     }
 }
@@ -119,8 +170,14 @@ function gunmanShootsPlayer() {
 }
 
 function playerShootsGunman() {
-    shotGunmanSound.currentTime = 0;
-    shotGunmanSound.play();
+    if(level == 1 || level >= 4) {
+        shotGunmanSound.currentTime = 0;
+        shotGunmanSound.play();
+    }
+    else {
+        shotPlayerSound.currentTime = 0;
+        shotPlayerSound.play();
+    }
     gunman.classList.toggle(`gunman-level-${level}__death`);
     const intervalId = setInterval(() => {
         timePanelPlayer.style.visibility = timePanelPlayer.style.visibility == 'visible' ? 'hidden' : 'visible';
@@ -137,6 +194,23 @@ function playerShootsGunman() {
         timePanelPlayer.style.visibility = 'visible';
         scoreCount();
     }, 2500);
+}
+
+function playerShootsEarly() {
+    waitSound.pause();
+    foulSound.currentTime = 0;
+    foulSound.play();
+    
+    message.classList.toggle('message--dead');
+    message.textContent = 'Foul!!!';
+    const intervalId = setInterval(() => {
+        message.style.visibility = message.style.visibility == 'visible' ? 'hidden' : 'visible';
+    }, 100);
+    setTimeout(() => {
+        clearInterval(intervalId);
+        message.style.visibility = 'visible';
+        buttonRestart.style.display = 'block';
+    }, 1500);
 }
 
 function scoreCount() {
