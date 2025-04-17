@@ -13,12 +13,14 @@ const buttonStart = document.querySelector('.button-start-game'),
     buttonNext = document.querySelector('.button-next-level'),
     gameMenu = document.querySelector('.game-menu'),
     gameWrapper = document.querySelector('.wrapper'),
+    winScreen = document.querySelector('.win-screen'),
     gameScreen = document.querySelector('.game-screen'),
     timePanelGunman = document.querySelector('.time-panel__gunman'),
     timePanelPlayer = document.querySelector('.time-panel__you'),
     scorePanelNumber = document.querySelector('.score-panel__score_num'),
     levelPanelNumber = document.querySelector('.score-panel__level_num'),
     gunman = document.querySelector('.gunman'),
+    hat = document.querySelector('.hat'),
     message = document.querySelector('.message'),
     introSound = new Audio('sfx/intro.m4a'),
     fireSound = new Audio('sfx/fire.m4a'),
@@ -67,15 +69,21 @@ buttonRestart.onclick = restartGame;
 
 function nextLevel() {
     winSound.pause();
+    gameWrapper.style.display = 'none';
     timePanelPlayer.textContent = '0.00';
     buttonNext.style.display = 'none';
-    gameWrapper.style.display = 'none';
     gunman.classList.remove(`gunman-level-${level}__death`);
+    gameScreen.classList.remove('game-screen--win');
+    hat.classList.remove(`hat-level-${level}`);
     message.classList.remove('message--win');
     message.textContent = '';
     
     gunman.classList.remove(`gunman-level-${level}`);
     level++;
+    if(level == 6) {
+        winGame();
+        return;
+    }
     gunman.classList.add(`gunman-level-${level}`);
     levelPanelNumber.textContent = level;
     gunmanTime -= 30;
@@ -179,6 +187,8 @@ function playerShootsGunman() {
         shotPlayerSound.play();
     }
     gunman.classList.toggle(`gunman-level-${level}__death`);
+    hat.classList.toggle(`hat-level-${level}`);
+    gameScreen.classList.toggle('game-screen--win');
     const intervalId = setInterval(() => {
         timePanelPlayer.style.visibility = timePanelPlayer.style.visibility == 'visible' ? 'hidden' : 'visible';
     }, 500);
@@ -222,4 +232,9 @@ function scoreCount() {
     score += reward;
     scorePanelNumber.textContent = score;
     buttonNext.style.display = 'block';
+}
+
+
+function winGame() {
+    winScreen.style.display = 'block'; 
 }
