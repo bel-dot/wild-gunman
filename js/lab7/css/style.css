@@ -127,11 +127,11 @@ body {
 }
 
 /*                              Screen win style                          */
-.game-screen--win {
-  animation: 0.5s player-win steps(10);
+.game-screen--shot {
+  animation: 0.5s player-shot steps(10);
 }
 
-@keyframes player-win {
+@keyframes player-shot {
   0% {
     filter: invert(0);
   }
@@ -268,23 +268,35 @@ body {
 }
 
 .score-panel__score {
-  position: absolute;
-  left: 25%;
-  top: 85%;
-  transform: translate(-50%, -50%);
   z-index: 700;
-
   box-sizing: border-box;
+  position: absolute;
+  left: 15%;
+  top: 85%;
+}
+
+.score-panel__reward {
+  z-index: 700;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 85%;
 }
 
 .score-panel__level {
-  position: absolute;
-  left: 70%;
-  top: 85%;
   z-index: 700;
-  transform: translate(-50%,-50%);
-
   box-sizing: border-box;
+  position: absolute;
+  left: 10%;
+  top: 12%;
+}
+
+.score-panel__lives {
+  z-index: 700;
+  box-sizing: border-box;
+  position: absolute;
+  left: 10%;
+  top: 4%;
 }
 /*                              End Game panels for scores style             */
 
