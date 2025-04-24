@@ -31,15 +31,40 @@ body {
 }
 
 
-label, button, select, span {
+label, button, select, span, input, pre {
     font-size: 1.5em;
 }
 
-button, select {
+#results-pre, #two-player-results-pre {
+    text-align: center;
+    white-space: pre-line;
+}
+
+button:disabled {
+    border: 3px solid gray;
+    color: gray;
+    cursor: default;
+}
+
+button:disabled:hover {
+    background-color: black;
+    color: gray;
+}
+
+#two-player-names, .two-player-setting {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+button, select, input {
     background-color: black;
     color: white;
     border: 3px solid white;
     padding: 10px;
+}
+
+button, select {
     cursor: pointer;
 }
 

@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>JS. Lab 8. Task 1.</title>
+    <title>GD Memory Pair Game</title>
 </head>
 <body>
     <div id="controls">
-        <button type="button" id="restart-btn">Restart</button>
+        <div id="two-player-div">
+            <input type="checkbox" name="two-player" id="two-player-check">
+            <label for="two-player">2-player mode</label>
+        </div>
         <div id="settings-div">
             <h1>Settings</h1>
             <label>Field size</label>
@@ -18,18 +21,51 @@
                 <option value="6x4">6 x 4</option>
                 <option value="6x6">6 x 6</option>
             </select>
-            <label>Difficulty</label>
-            <select id="difficulty-select" name="difficulty">
+            <label class="one-player-setting">Difficulty</label>
+            <select id="difficulty-select" class="one-player-setting" name="difficulty">
                 <option value="180" selected>Easy</option>
                 <option value="120">Normal</option>
                 <option value="60">Hard</option>
             </select>
+            <label class="two-player-setting">Rounds</label>
+            <input type="number" name="rounds" value="1" min="1" max="10" class="two-player-setting" id="rounds-input">
+            <div id="jumpscare-div">
+                <input type="checkbox" name="jumpscare" id="jumpscare-check">
+                <label for="jumpscare">Disable jumpscare</label>
+            </div>
+            <div id="sound-div">
+                <input type="checkbox" name="sound" id="sound-check">
+                <label for="sound">Disable sounds</label>
+            </div>
             <button type="button" id="reset-btn">Reset settings</button>
         </div>
-        <span>Time: <span id="time-span">0:00</span></span>
-        <span>Steps: <span id="steps-span">0</span></span>
+        <div id="two-player-names">
+            <input type="text" placeholder="1st player name" id="first-player-name" class="two-player-setting">
+            <input type="text" placeholder="2nd player name" id="second-player-name" class="two-player-setting">
+        </div>
+        <div class="one-player-setting">
+            <span>Time: <span id="time-span">0:00</span></span>
+            <span>Steps: <span id="steps-span">0</span></span>
+        </div>
+        <div class="two-player-setting">
+            <span>
+                Round <span id="round-span">1</span>
+            </span>
+            <span id="turn-span"></span>
+            <div>
+                <span>1. Steps:<span id="steps-1-span">0</span></span>
+                <span>Score:<span id="score-1-span">0</span></span>
+            </div>
+            <div>
+                <span>2. Steps:<span id="steps-2-span">0</span></span>
+                <span>Score:<span id="score-2-span">0</span></span>
+            </div>
+        </div>
         <button type="button" id="start-game">Start game</button>
-        <span id="results-span"></span>
+        <button type="button" id="restart-btn" class="one-player-setting">Restart</button>
+        <button type="button" id="next-round" class="two-player-setting" disabled>Next round</button>
+        <pre id="results-pre"></pre>
+        <pre id="two-player-results-pre"></pre>
     </div>
     <div id="memory-cards">
         <div class="memory-card">

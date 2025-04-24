@@ -6,7 +6,23 @@ let width = 6,
     currentTime = time,
     steps = 0,
     intervalId = '',
+    twoPlayers = false,
+    round = 1,
+    rounds = 1,
+    nameFirst = 'Player 1',
+    nameSecond = 'Player 2',
+    timeFirst = 0,
+    timeSecond = 0,
+    stepsFirst = 0,
+    stepsSecond = 0,
+    scoreFirst = 0,
+    scoreSecond = 0,
+    intervalIdFirst = '',
+    intervalIdSecond = '',
+    turn = true,
     pairsAmount = (width * height) / 2;
+
+const roundResults = [];
 
 const images = [
     { name: "evw", url: "https://media1.tenor.com/m/morPeOgGlkkAAAAd/erivvanwilderman-geometry-dash.gif" },
@@ -34,13 +50,30 @@ let pair = [];
 
 const cardsContainer = document.getElementById('memory-cards'),
     restartButton = document.getElementById('restart-btn'),
+    nextRoundButton = document.getElementById('next-round'),
     sizeSelect = document.getElementById('size-select'),
     difficultySelect = document.getElementById('difficulty-select'),
     resetSettingsButton = document.getElementById('reset-btn'),
     startGameButton = document.getElementById('start-game'),
+    roundsInput = document.getElementById('rounds-input'),
+    firstPlayerNameInput = document.getElementById('first-player-name'),
+    secondPlayerNameInput = document.getElementById('second-player-name'),
+    turnSpan = document.getElementById('turn-span'),
+    roundSpan = document.getElementById('round-span'),
     timeSpan = document.getElementById('time-span'),
     stepsSpan = document.getElementById('steps-span'),
-    resultsSpan = document.getElementById('results-span'),
+    stepsFirstSpan = document.getElementById('steps-1-span'),
+    stepsSecondSpan = document.getElementById('steps-2-span'),
+    scoreFirstSpan = document.getElementById('score-1-span'),
+    scoreSecondSpan = document.getElementById('score-2-span'),
+    resultsPre = document.getElementById('results-pre'),
+    twoPlayerResultsPre = document.getElementById('two-player-results-pre'),
+    soundCheck = document.getElementById('sound-check'),
+    jumpscareCheck = document.getElementById('jumpscare-check'),
+    twoPlayersCheck = document.getElementById('two-player-check'),
+    twoPlayersNames = document.getElementById('two-player-names'),
+    twoPlayersSettings = document.getElementsByClassName('two-player-setting'),
+    onePlayersSettings = document.getElementsByClassName('one-player-setting'),
     wrongSound = new Audio('sounds/wrong.mp3'),
     deathSound = new Audio('sounds/death.mp3'),
     winSound = new Audio('sounds/win.mp3'),
@@ -51,6 +84,17 @@ const cardsContainer = document.getElementById('memory-cards'),
 function shuffle(list) {
     list.sort((a, b) => 0.5 - Math.random());
 }
+
+twoPlayersCheck.addEventListener('change', (e) => {
+    twoPlayers = e.target.checked;
+    twoPlayersNames.style.display = twoPlayers ? 'flex' : 'none';
+    for(const setting of twoPlayersSettings) {
+        setting.style.display = twoPlayers ? 'block' : 'none';
+    }
+    for(const setting of onePlayersSettings) {
+        setting.style.display = twoPlayers ? 'none' : 'block';
+    }
+});
 
 function placeCards(show = false) {
     shuffle(images);    
@@ -83,14 +127,55 @@ function placeCards(show = false) {
 
 placeCards(true);
 
-restartButton.addEventListener('click', placeCards);
+restartButton.addEventListener('click', restartGame);
+
+function restartGame() {
+    resultsPre.textContent = '';
+    steps = 0;
+    stepsSpan.textContent = steps;
+    startTimer();
+    setupGrid();
+    placeCards();
+}
 
 function startGame() {
     [ width, height ] = sizeSelect.value.split('x');
-    time = Number(difficultySelect.value);
-    currentTime = time;
+    if(!twoPlayers) {
+        time = Number(difficultySelect.value);
+        currentTime = time;
+        steps = 0;
+        stepsSpan.textContent = steps;
+        startTimer();
+    }
+    else {
+        round = 1;
+        rounds = roundsInput.value;
+        roundSpan.textContent = round;
+        
+        nameFirst = firstPlayerNameInput.value != '' ? firstPlayerNameInput.value : 'Player 1';
+        nameSecond = secondPlayerNameInput.value != '' ? secondPlayerNameInput.value : 'Player 2';
 
-    startTimer();
+        stepsFirst = 0;
+        stepsSecond = 0;
+        stepsFirstSpan.textContent = stepsFirst;
+        stepsSecondSpan.textContent = stepsSecond;
+
+        scoreFirst = 0;
+        scoreSecond = 0;
+        scoreFirstSpan.textContent = scoreFirst;
+        scoreSecondSpan.textContent = scoreSecond;
+
+        timeFirst = 0;
+        timeSecond = 0;
+
+        twoPlayerResultsPre.textContent = '';
+        turnSpan.textContent = '';
+        start2PlayerTimer();
+    }
+
+    resultsPre.textContent = '';
+
+
     setupGrid();
     placeCards();
 }
@@ -99,10 +184,11 @@ startGameButton.addEventListener('click', startGame);
 
 function resetSettings() {
     sizeSelect.value = "4x4";
-    difficultySelect.value = "easy";
+    difficultySelect.value = "180";
 }
 
 function startTimer() {
+    clearInterval(intervalId);
     timeSpan.textContent = `${time / 60}:00`;
     intervalId = setInterval(() => {
         currentTime--;
@@ -114,6 +200,23 @@ function startTimer() {
         }
     }, 1000);
 }
+    
+function start2PlayerTimer() {
+    clearInterval(intervalIdSecond);
+    clearInterval(intervalIdFirst);
+    if(turn) {
+        turnSpan.textContent = `${nameFirst}'s turn`;
+        intervalIdFirst = setInterval(() => {
+            timeFirst++;
+        }, 1000);
+    }
+    else {
+        turnSpan.textContent = `${nameSecond}'s turn`;
+        intervalIdSecond = setInterval(() => {
+            timeSecond++;
+        });
+    }
+}
 
 resetSettingsButton.addEventListener('click', resetSettings)
 
@@ -123,7 +226,7 @@ function gameOver() {
         card.removeEventListener('click', showCard);
     }
     play(deathSound, 0.5);
-    resultsSpan.textContent = 'Game over!';
+    resultsPre.textContent = 'Game over!';
 }
 
 function showCard(event) {
@@ -141,33 +244,125 @@ function setupGrid() {
     cardsContainer.style.gridTemplateRows = `repeat(${height}, 200px)`;
     cardsContainer.style.gridTemplateColumns = `repeat(${width}, 200px)`;
     pairsAmount = (height * width) / 2;
-    console.log(pairsAmount);
 }
 
 setupGrid();
 
 function winGame() {
-    clearInterval(intervalId);
-    play(winSound);
-    const minutesCompleted = Math.floor((time - currentTime) / 60);
-    const secondsCompleted = (time - currentTime) % 60;
-    resultsSpan.textContent = `You won!\nYour time: ${minutesCompleted}:${(secondsCompleted < 10 ? `0${secondsCompleted}` : secondsCompleted)}`;
+    if(!twoPlayers) {
+        clearInterval(intervalId);
+        play(winSound);
+        const minutesCompleted = Math.floor((time - currentTime) / 60);
+        const secondsCompleted = (time - currentTime) % 60;
+        resultsPre.textContent = `You won!\nYour time: ${minutesCompleted}:${(secondsCompleted < 10 ? `0${secondsCompleted}` : secondsCompleted)}`;
+    }
+    else {
+        clearInterval(intervalIdFirst);
+        clearInterval(intervalIdSecond);
+        if(scoreFirst != scoreSecond) {
+            const firstWon = scoreFirst > scoreSecond;
+            turn = !firstWon;
+            resultsPre.textContent = firstWon ? `${nameFirst} has won the round!` : `${nameSecond} has won the round!`;
+            roundResults.push({
+                number: round,
+                won: firstWon ? nameFirst : nameSecond,
+                time: firstWon ? timeFirst : timeSecond,
+                steps: firstWon ? stepsFirst : stepsSecond,
+            });
+        }
+        else {
+            resultsPre.textContent = 'Round ended with a tie!';
+        }
+        if(round == rounds) {
+            win2PlayerGame();         
+        }
+        else {
+            nextRoundButton.disabled = false;
+        }
+    }
+}
+
+function nextRound() {
+    roundSpan.textContent = ++round;
+
+    stepsFirst = 0;
+    stepsSecond = 0;
+    stepsFirstSpan.textContent = stepsFirst;
+    stepsSecondSpan.textContent = stepsSecond;
+
+    scoreFirst = 0;
+    scoreSecond = 0;
+    scoreFirstSpan.textContent = scoreFirst;
+    scoreSecondSpan.textContent = scoreSecond;
+
+    timeFirst = 0;
+    timeSecond = 0;
+
+    twoPlayerResultsPre.textContent = '';
+    turnSpan.textContent = '';
+    pairsAmount = (height * width) / 2;
+
+    resultsPre.textContent = '';
+
+    start2PlayerTimer();
+    placeCards();
+
+    nextRoundButton.disabled = true;
+}
+
+nextRoundButton.addEventListener('click', nextRound);
+
+function win2PlayerGame() {
+    const roundsFirst = roundResults.filter(round => round.won == nameFirst);
+    const roundsSecond = roundResults.filter(round => round.won == nameSecond);
+
+    if(roundsFirst.length > roundsSecond.length) {
+        twoPlayerResultsPre.textContent = `${nameFirst} has won the game!\nRounds won:\n`
+        roundsFirst.forEach(round => {
+            twoPlayerResultsPre.textContent += `---
+            Round ${round.number}
+            Time: ${round.time}s
+            Steps: ${round.steps}\n`;
+        });
+    }
+    else if(roundsFirst.length < roundsSecond.length) {
+        twoPlayerResultsPre.textContent = `${nameSecond} has won the game!\nRounds won:\n`
+        roundsSecond.forEach(round => {
+            twoPlayerResultsPre.textContent += `---
+            Round ${round.number}
+            Time: ${round.time}s
+            Steps: ${round.steps}\n`;
+        });
+    }
+    else {
+        twoPlayerResultsPre.textContent = 'Game ended with a tie!';
+    }
 }
 
 function play(sound, time = 0) {
-    sound.currentTime = time;
-    sound.play();
+    if(!soundCheck.checked) {
+        sound.currentTime = time;
+        sound.play();
+    }
 }
 
 function compareCards(a, b) {
-    stepsSpan.textContent = ++steps;
+    if(!twoPlayers) stepsSpan.textContent = ++steps;
+    else {
+        turn ? stepsFirstSpan.textContent = ++stepsFirst
+        : stepsSecondSpan.textContent = ++stepsSecond;
+    }
     setTimeout(() => {
         if(a.className == b.className) {
+            if(twoPlayers) {
+                turn ? scoreFirstSpan.textContent = ++scoreFirst
+                : scoreSecondSpan.textContent = ++scoreSecond;
+            }
             pairsAmount--;
             if(a.classList.contains('normal')) {
                 play(fireSound);
             }
-            else if(a.classList.contains('congregation')) {
+            else if(a.classList.contains('congregation') && !jumpscareCheck.checked) {
                 play(congregationSound);
             }
             else {
@@ -186,6 +381,8 @@ function compareCards(a, b) {
 
             a.addEventListener('click', showCard);
             b.addEventListener('click', showCard);
+            turn = !turn;
+            start2PlayerTimer();
         }
     }, 500);
 }
