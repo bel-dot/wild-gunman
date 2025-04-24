@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple Carousel Slider</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="carousel">
+        <div class="carousel-track" id="track">
+            <div class="slide">
+                Slide 1
+            </div>
+            <div class="slide">
+                Slide 2
+            </div>
+            <div class="slide">
+                Slide 3
+            </div>
+        </div>
+        <button type="button" class="nav-btn prev-btn" id="prev">&#10094;</button>
+        <button type="button" class="nav-btn next-btn" id="next">&#10095;</button>
+        <div id="slider-dots">
+            <div class="slider-dot selected"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+        </div>
+        <div class="setting-div">
+            <input type="checkbox" id="show-arrows" checked>
+            <label>Show slider arrows</label>
+        </div>
+        <div class="setting-div">
+            <input type="checkbox" id="show-pages" checked>
+            <label>Show slider pages</label>
+        </div>
+        <div class="setting-div">
+            <input type="checkbox" id="autoplay">
+            <label>Autoplay</label>
+        </div>
+        <input type="number" min="100" class="setting-div" id="animation-speed" placeholder="Animation speed (ms)">
+        <script src="script.js"></script>
+    </body>
+</html>
