@@ -1,5 +1,11 @@
-let width = 3,
-    height = 4,
+'use strict'
+
+let width = 6,
+    height = 6,
+    time = 180,
+    currentTime = time,
+    steps = 0,
+    intervalId = '',
     pairsAmount = (width * height) / 2;
 
 const images = [
@@ -28,7 +34,16 @@ let pair = [];
 
 const cardsContainer = document.getElementById('memory-cards'),
     restartButton = document.getElementById('restart-btn'),
+    sizeSelect = document.getElementById('size-select'),
+    difficultySelect = document.getElementById('difficulty-select'),
+    resetSettingsButton = document.getElementById('reset-btn'),
+    startGameButton = document.getElementById('start-game'),
+    timeSpan = document.getElementById('time-span'),
+    stepsSpan = document.getElementById('steps-span'),
+    resultsSpan = document.getElementById('results-span'),
     wrongSound = new Audio('sounds/wrong.mp3'),
+    deathSound = new Audio('sounds/death.mp3'),
+    winSound = new Audio('sounds/win.mp3'),
     fireSound = new Audio('sounds/fire.mp3'),
     congregationSound = new Audio('sounds/congregation.mp3'),
     correctSound = new Audio('sounds/correct.mp3');
@@ -37,18 +52,18 @@ function shuffle(list) {
     list.sort((a, b) => 0.5 - Math.random());
 }
 
-function placeCards() {
+function placeCards(show = false) {
     shuffle(images);    
     
-    splicedImages = pairsAmount < images.length ? images.splice(0, pairsAmount) : images;
+    const splicedImages = pairsAmount < images.length ? [...images].splice(0, pairsAmount) : images;
     cardsContainer.innerHTML = '';
     for(const img of splicedImages) {
         const card = document.createElement('div');
-        card.className = `memory-card ${img.name}`;
+        card.className = `memory-card ${img.name} ${(show ? 'shown' : '')}`;
         card.innerHTML = `
             <img src="${img.url}" alt="card-img">
         `
-        card.addEventListener('click', showCard);
+        if(!show) card.addEventListener('click', showCard);
         
         cardsContainer.appendChild(card);
     }
@@ -56,19 +71,60 @@ function placeCards() {
     shuffle(splicedImages);
     for(const img of splicedImages) {
         const card = document.createElement('div');
-        card.className = `memory-card ${img.name}`;
+        card.className = `memory-card ${img.name} ${(show ? 'shown' : '')}`;
         card.innerHTML = `
             <img src="${img.url}" alt="card-img">
         `
-        card.addEventListener('click', showCard);
+        if(!show) card.addEventListener('click', showCard);
         
         cardsContainer.appendChild(card);
     }
 }
 
-placeCards();
+placeCards(true);
 
 restartButton.addEventListener('click', placeCards);
+
+function startGame() {
+    [ width, height ] = sizeSelect.value.split('x');
+    time = Number(difficultySelect.value);
+    currentTime = time;
+
+    startTimer();
+    setupGrid();
+    placeCards();
+}
+
+startGameButton.addEventListener('click', startGame);
+
+function resetSettings() {
+    sizeSelect.value = "4x4";
+    difficultySelect.value = "easy";
+}
+
+function startTimer() {
+    timeSpan.textContent = `${time / 60}:00`;
+    intervalId = setInterval(() => {
+        currentTime--;
+        const seconds = (currentTime % 60) < 10 ? `0${currentTime % 60}` : currentTime % 60;
+        timeSpan.textContent = `${Math.floor(currentTime / 60)}:${seconds}`;
+        
+        if(currentTime == 0 && pairsAmount > 0) {
+            gameOver();
+        }
+    }, 1000);
+}
+
+resetSettingsButton.addEventListener('click', resetSettings)
+
+function gameOver() {
+    clearInterval(intervalId);
+    for(const card of cardsContainer.children) {
+        card.removeEventListener('click', showCard);
+    }
+    play(deathSound, 0.5);
+    resultsSpan.textContent = 'Game over!';
+}
 
 function showCard(event) {
     event.target.classList.toggle('shown');
@@ -85,10 +141,18 @@ function setupGrid() {
     cardsContainer.style.gridTemplateRows = `repeat(${height}, 200px)`;
     cardsContainer.style.gridTemplateColumns = `repeat(${width}, 200px)`;
     pairsAmount = (height * width) / 2;
+    console.log(pairsAmount);
 }
 
 setupGrid();
 
+function winGame() {
+    clearInterval(intervalId);
+    play(winSound);
+    const minutesCompleted = Math.floor((time - currentTime) / 60);
+    const secondsCompleted = (time - currentTime) % 60;
+    resultsSpan.textContent = `You won!\nYour time: ${minutesCompleted}:${(secondsCompleted < 10 ? `0${secondsCompleted}` : secondsCompleted)}`;
+}
 
 function play(sound, time = 0) {
     sound.currentTime = time;
@@ -96,8 +160,10 @@ function play(sound, time = 0) {
 }
 
 function compareCards(a, b) {
+    stepsSpan.textContent = ++steps;
     setTimeout(() => {
         if(a.className == b.className) {
+            pairsAmount--;
             if(a.classList.contains('normal')) {
                 play(fireSound);
             }
@@ -109,6 +175,9 @@ function compareCards(a, b) {
             }
             a.style.border = '3px solid green';
             b.style.border = '3px solid green';
+            if(pairsAmount == 0) {
+                winGame();
+            }
         }
         else {
             play(wrongSound);

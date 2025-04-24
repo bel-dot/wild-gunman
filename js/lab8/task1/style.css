@@ -9,15 +9,36 @@ body {
 }
 
 #controls {
-    width: 40%;
-    margin: 0 10%;
+    position: absolute;
+    left: 0;
+    top: 5%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-button {
+#controls * {
+    margin: 10px;
+}
+
+#settings-div {
+    border: 3px solid white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+label, button, select, span {
+    font-size: 1.5em;
+}
+
+button, select {
     background-color: black;
     color: white;
     border: 3px solid white;
-    font-size: 1.5em;
     padding: 10px;
     cursor: pointer;
 }
@@ -31,8 +52,9 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(4, 200px);
     grid-template-rows: repeat(4, 200px);
-    width: 60%;
-    margin: 0 30%;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 

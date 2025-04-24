@@ -9,10 +9,30 @@
 <body>
     <div id="controls">
         <button type="button" id="restart-btn">Restart</button>
+        <div id="settings-div">
+            <h1>Settings</h1>
+            <label>Field size</label>
+            <select id="size-select" name="size">
+                <option value="4x4" selected>4 x 4</option>
+                <option value="5x4">5 x 4</option>
+                <option value="6x4">6 x 4</option>
+                <option value="6x6">6 x 6</option>
+            </select>
+            <label>Difficulty</label>
+            <select id="difficulty-select" name="difficulty">
+                <option value="180" selected>Easy</option>
+                <option value="120">Normal</option>
+                <option value="60">Hard</option>
+            </select>
+            <button type="button" id="reset-btn">Reset settings</button>
+        </div>
+        <span>Time: <span id="time-span">0:00</span></span>
+        <span>Steps: <span id="steps-span">0</span></span>
+        <button type="button" id="start-game">Start game</button>
+        <span id="results-span"></span>
     </div>
     <div id="memory-cards">
         <div class="memory-card">
-            <div class="card-closed">X</div>
             <img src="https://media1.tenor.com/m/morPeOgGlkkAAAAd/erivvanwilderman-geometry-dash.gif" alt="card-img">
         </div>
     </div>
