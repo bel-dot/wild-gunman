@@ -142,7 +142,6 @@ function startGame() {
     [ width, height ] = sizeSelect.value.split('x');
     if(!twoPlayers) {
         time = Number(difficultySelect.value);
-        currentTime = time;
         steps = 0;
         stepsSpan.textContent = steps;
         startTimer();
@@ -189,6 +188,7 @@ function resetSettings() {
 
 function startTimer() {
     clearInterval(intervalId);
+    currentTime = time;
     timeSpan.textContent = `${time / 60}:00`;
     intervalId = setInterval(() => {
         currentTime--;
