@@ -133,6 +133,7 @@ function restartGame() {
     resultsPre.textContent = '';
     steps = 0;
     stepsSpan.textContent = steps;
+    pair = [];
     startTimer();
     setupGrid();
     placeCards();
@@ -140,6 +141,11 @@ function restartGame() {
 
 function startGame() {
     [ width, height ] = sizeSelect.value.split('x');
+    clearInterval(intervalId);
+    clearInterval(intervalIdFirst);
+    clearInterval(intervalIdSecond);
+    pair = [];
+    turn = true;
     if(!twoPlayers) {
         time = Number(difficultySelect.value);
         steps = 0;
