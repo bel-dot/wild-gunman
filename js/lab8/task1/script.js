@@ -148,6 +148,7 @@ function startGame() {
     turn = true;
     if(!twoPlayers) {
         time = Number(difficultySelect.value);
+        restartButton.disabled = false;
         steps = 0;
         stepsSpan.textContent = steps;
         startTimer();
