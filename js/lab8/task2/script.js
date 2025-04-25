@@ -9,19 +9,31 @@ const track = document.getElementById('track'),
     prevButton = document.getElementById('prev'),
     nextButton = document.getElementById('next');
 
-const images = [
+const options = {
+    images: [
     "https://picsum.photos/1600/500?random=1",
     "https://picsum.photos/1600/500?random=2",
     "https://picsum.photos/1600/500?random=3",
-]
+    ],
+    showArrows: true,
+    showPages: true,
+    autoplay: false,
+};
 
 let currentSlide = 0;
-let autoplay = false;
 let intervalId = '';
 
 window.addEventListener('load', () => {
-    for(let i = 0; i < images.length; i++) {
-        slides[i].style.background = `url(${images[i]}) no-repeat`;
+    prevButton.style.display = options.showArrows ? 'block' : 'none';
+    nextButton.style.display = options.showArrows ? 'block' : 'none';
+    sliderDots.style.display = options.showPages ? 'flex' : 'none';
+    
+    showArrowsCheck.checked = options.showArrows;
+    showPagesCheck.checked = options.showPages;
+    autoplayCheck.checked = options.autoplay;
+
+    for(let i = 0; i < options.images.length; i++) {
+        slides[i].style.background = `url(${options.images[i]}) no-repeat`;
     }
     for(let i = 0; i < pages.length; i++) {
         pages[i].addEventListener('click', () => {
@@ -32,8 +44,8 @@ window.addEventListener('load', () => {
 })
 
 autoplayCheck.addEventListener('change', () => {
-    autoplay = autoplayCheck.checked;
-    if(autoplay) {
+    options.autoplay = autoplayCheck.checked;
+    if(options.autoplay) {
         intervalId = setInterval(nextSlide, 3000);
     }
     else {
@@ -42,14 +54,14 @@ autoplayCheck.addEventListener('change', () => {
 })
 
 showArrowsCheck.addEventListener('change', () => {
-    const checked = showArrowsCheck.checked;
-    prevButton.style.display = checked ? 'block' : 'none';
-    nextButton.style.display = checked ? 'block' : 'none';
+    options.showArrows = showArrowsCheck.checked;
+    prevButton.style.display = options.showArrows ? 'block' : 'none';
+    nextButton.style.display = options.showArrows ? 'block' : 'none';
 })
 
 showPagesCheck.addEventListener('change', () => {
-    const checked = showPagesCheck.checked;
-    sliderDots.style.display = checked ? 'flex' : 'none';
+    options.showPages = showPagesCheck.checked;
+    sliderDots.style.display = options.showPages ? 'flex' : 'none';
 })
 
 animationSpeedInput.addEventListener('change', (e) => {
@@ -74,9 +86,10 @@ track.addEventListener('mouseover', () => {
 })
 
 track.addEventListener('mouseleave', () => {
-    if(autoplay) {
+    if(options.autoplay) {
         intervalId = setInterval(nextSlide, 3000);
     }
+    else clearInterval(intervalId);
 })
 
 function previousSlide() {
