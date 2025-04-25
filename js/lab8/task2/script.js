@@ -35,12 +35,14 @@ window.addEventListener('load', () => {
     for(let i = 0; i < options.images.length; i++) {
         slides[i].style.background = `url(${options.images[i]}) no-repeat`;
     }
-    for(let i = 0; i < pages.length; i++) {
-        pages[i].addEventListener('click', () => {
-            currentSlide = i;
-            updateSlidePosition();
-        });
-    }
+    sliderDots.addEventListener('click', (e) => {
+        const dot = e.target.closest('.slider-dot');
+        if(!dot) return;
+
+        const index = Array.from(sliderDots.children).indexOf(dot);
+        currentSlide = index;
+        updateSlidePosition();
+    })
 })
 
 autoplayCheck.addEventListener('change', () => {
