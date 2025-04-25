@@ -23,6 +23,12 @@ window.addEventListener('load', () => {
     for(let i = 0; i < images.length; i++) {
         slides[i].style.background = `url(${images[i]}) no-repeat`;
     }
+    for(let i = 0; i < pages.length; i++) {
+        pages[i].addEventListener('click', () => {
+            currentSlide = i;
+            updateSlidePosition();
+        });
+    }
 })
 
 autoplayCheck.addEventListener('change', () => {
