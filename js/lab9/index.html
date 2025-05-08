@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS. Lab 9.</title>
+</head>
+<body>
+    <div id="form-div">
+        <h1>Massive info collector</h1>
+        <div id="form-tabs">
+            <a href="#" id="register" class="active">Register</a>
+            <a href="#" id="login">Login</a>
+        </div>
+        <form id="register-form" method="post" name="register">
+            <label for="first-name">First name</label>
+            <input type="text" name="first-name" placeholder="Enter first name">
+            <small>Name must be 3-15 letters long</small>
+
+            <label for="last-name">Last name</label>
+            <input type="text" name="last-name" placeholder="Enter last name">
+            <small>Name must be 3-15 letters long</small>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Enter an email">
+            <small>Invalid email input</small>
+
+            <label for="pass">Password</label>
+            <input type="password" name="pass" placeholder="Enter password">
+            <small>The password must be at least 6 characters long</small>
+
+            <label for="confirm-pass">Repeat password lol</label>
+            <input type="password" name="confirm-pass" placeholder="Repeat password">
+            <small>This is not the same password</small>
+
+            <label for="phone">Phone (zhivchik's numbers only)</label>
+            <input type="text" name="phone" placeholder="Enter your phone number">
+            <small>SIKES! That's the wrong number</small>
+
+            <label for="date-birth">Date of birth</label>
+            <input type="date" name="date-birth">
+            <small>You must be at least 12 years old</small>
+
+            <label for="sex">Sex</label>
+            <select name="sex" required id="sex">
+                <option value="none" selected>Three times a week</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <small>😏</small>
+
+            <label for="country">Country</label>
+            <select name="country" required id="country">
+                <option value="none" selected>Arstotzka</option>
+                <option value="ukraine">Ukraine 🇺🇦</option>
+                <option value="poland">Poland</option>
+                <option value="usa">USA</option>
+                <option value="germany">Germany</option>
+                <option value="austria">Austria</option>
+                <option value="russia">Russia 🤮</option>
+            </select>
+            <small>🫡</small>
+
+            <label for="city">City</label>
+            <select name="city" required id="city">
+                <option class="ukraine-option" value="chernivtsi" selected>Chernivtsi</option>
+                <option class="ukraine-option" value="khmelnytskyi">Khmelnytskyi</option>
+                <option class="ukraine-option" value="kyiv">Kyiv</option>
+                <option class="ukraine-option" value="kharkiv">Kharkiv</option>
+                <option class="ukraine-option" value="chornobyl">Chornobyl 💀</option>
+
+                <option class="poland-option" value="warsaw" selected>Warsaw</option>
+                <option class="poland-option" value="krakow">Krakow</option>
+                <option class="poland-option" value="wroclaw">Wroclaw</option>
+                <option class="poland-option" value="bydgoszcz">Bydgoszcz</option>
+
+                <option class="usa-option" value="new-york" selected>New york</option>
+                <option class="usa-option" value="washington">Washington</option>
+                <option class="usa-option" value="los-angeles">Los angeles</option>
+                <option class="usa-option" value="texas">Texas</option>
+
+                <option class="germany-option" value="berlin" selected>Berlin</option>
+                <option class="germany-option" value="munich">Munich</option>
+                <option class="germany-option" value="frankfurt">Frankfurt</option>
+                <option class="germany-option" value="hamburg">Hamburg(er)</option>
+
+                <option class="austria-option" value="vienna" selected>Vienna</option>
+                <option class="austria-option" value="klagenfurt">Klagenfurt</option>
+                <option class="austria-option" value="graz">Graz</option>
+                <option class="austria-option" value="bregenz">Bregenz</option>
+
+                <option class="russia-option" value="moscow" selected>Moscow</option>
+                <option class="russia-option" value="st-petersburg">St. Petersburg</option>
+                <option class="russia-option" value="voronezh">Voronezh</option>
+
+                <option value="none" selected>Nirsk</option>
+            </select>
+            <small>🫡</small>
+
+            <button type="submit"><del>Give all your data</del> Register</button>
+        </form>
+        <div id="all-valid">
+            <h1>Registration went succesfull</h1>
+        </div>
+        <form id="login-form" method="get" name="login">
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="Enter your username">
+            <small>This field is required</small>
+
+            <label for="pass">Password</label>
+            <input type="password" name="pass" placeholder="Enter password">
+            <small>The password must be at least 6 characters long</small>
+
+            <div>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Don't forget</label>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

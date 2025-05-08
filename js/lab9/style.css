@@ -1,0 +1,124 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    width: 100vw;
+
+    background-image: url('https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif');
+    background-color: black;
+    background-position: fixed 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#form-div {
+    width: 50%;
+    margin: 0 25%;
+    background-color: white;
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: rgba(56, 56, 146, 0.753);
+    color: white;
+    box-shadow: 0 0 3px black;
+}
+
+#form-div div, #form-div form {
+    margin: 10px;
+}
+
+#form-tabs {
+    display: flex;
+}
+
+#form-tabs a {
+    text-decoration: none;
+    border: 3px solid white;
+    padding: 5px 10px;
+    color: white;
+}
+
+#form-tabs a.active {
+    background-color: white;
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+input, select, button {
+    padding: 10px;
+    margin-bottom: 20px;
+    color: inherit;
+    background-color: inherit;
+    border: 3px solid white;
+    font-size: 1.5em;
+    
+    transition: border 0.5s cubic-bezier();
+}
+
+#all-valid {
+    position: fixed;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    background-color: green;
+    border: 5px solid black;
+    box-shadow: inset 0 0 5px black;
+    transform: translate(-50%, -50%);
+    
+    display: none;
+}
+
+#city option {
+    display: none;
+}
+
+button {
+    margin-top: 20px;
+}
+
+button, select {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+label {
+    font-size: 1.25em;
+    margin-bottom: 5px;
+}
+
+small {
+    display: none;
+    margin-bottom: 20px;
+}
+
+input.invalid, select.invalid {
+    border: 3px solid red;
+    margin-bottom: 5px;
+}
+
+input.valid, select.valid {
+    border: 3px solid limegreen;
+}
+
+input.invalid + small, select.invalid + small {
+    display: inline;
+}
+
+#login-form {
+    display: none;
+}
