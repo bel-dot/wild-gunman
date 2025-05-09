@@ -5,6 +5,11 @@
 
 body {
     width: 100vw;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-image: url('https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif');
     background-color: black;
@@ -13,19 +18,106 @@ body {
     background-size: cover;
 }
 
-#form-div {
+#form-window {
     width: 50%;
-    margin: 0 25%;
+    margin: 20px 0;
     background-color: white;
     padding: 20px;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    opacity: 0;
     
     background-color: rgba(56, 56, 146, 0.753);
     color: white;
     box-shadow: 0 0 3px black;
+}
+
+#form-window.intro {
+    opacity: 1;
+    animation: form-intro 1s linear;
+}
+
+@keyframes form-intro { 
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes text-intro {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 2em;
+    margin: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+#intro2 {
+    top: 30%;
+}
+
+#form-window.intro #intro1 {
+    animation: text-intro 1s linear 2s;
+    animation-fill-mode: forwards;
+}
+
+#form-window.intro #intro2 {
+    animation: text-intro 1s linear 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes text-outro {
+    from {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+#form-window.active .intro-text {
+    animation: text-outro 1s linear;
+    opacity: 0;
+}
+
+#form-window.active {
+    opacity: 1;
+}
+
+
+#forms-div {
+    width: 100%;
+
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-window.active #forms-div {
+    opacity: 1;
 }
 
 #form-div div, #form-div form {
@@ -71,12 +163,58 @@ input, select, button {
     padding: 30px;
     top: 50%;
     left: 50%;
-    background-color: green;
+    background-color: white;
+    color: black;
     border: 5px solid black;
     box-shadow: inset 0 0 5px black;
     transform: translate(-50%, -50%);
-    
+    z-index: 1;
+
     display: none;
+}
+
+#all-valid img {
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+
+#all-valid-login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    color: black;
+    border: 5px solid green;
+    box-shadow: inset 0 0 5px black;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: none;
+}
+
+#all-valid-login img {
+    width: 500px;
+    height: 500px;
+}
+
+#all-valid-login.show {
+   display: block;
+   animation: all-valid 3s linear; 
+}
+
+#all-valid.show {
+   display: block;
+   animation: all-valid 3s linear; 
+}
+
+@keyframes all-valid {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
 }
 
 #city option {
@@ -121,4 +259,10 @@ input.invalid + small, select.invalid + small {
 
 #login-form {
     display: none;
+}
+
+@media screen and (max-width: 734px) {
+    #form-window {
+        width: 80%;
+    }
 }

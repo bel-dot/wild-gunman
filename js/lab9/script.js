@@ -3,6 +3,40 @@
 const selects = [ ...document.getElementsByTagName('select') ];
 const inputs = [ ...document.getElementsByTagName('input'), ...selects ];
 
+const formWindow = document.getElementById('form-window'),
+    rememberCheckbox = document.getElementById('remember'),
+    backgroundMusic = new Audio('./thrash.mp3'),
+    laughSound = new Audio('./laugh.mp3'),
+    goodSound = new Audio('./good.mp3'),
+    dontForget = new Audio('./dont_forget.mp3');
+
+let forgot = false;
+console.log(backgroundMusic.volume);
+
+rememberCheckbox.addEventListener('change', () => {
+    if(!forgot && rememberCheckbox.checked) {
+        forgot = true;
+        backgroundMusic.pause();
+        dontForget.currentTime = 0;
+        dontForget.play();
+    }
+});
+
+dontForget.addEventListener('ended', returnBackgroundMusic)
+
+function returnBackgroundMusic() {
+    backgroundMusic.volume = 0;
+    backgroundMusic.play();
+    
+    const intervalId = setInterval(() => {
+        backgroundMusic.volume += 0.01;
+        if(backgroundMusic.volume >= 1) {
+            backgroundMusic.volume = 1;
+            clearInterval(intervalId);
+        }
+    }, 5);
+}
+
 inputs.forEach(element => {
     element.addEventListener('input', () => {
         element.className = '';
@@ -24,7 +58,24 @@ window.addEventListener('load', () => {
     if(countryInput.value != '') {
         onCountryChange();
     }
+    
+    
+    setTimeout(runIntro, 500);
 })
+
+function runIntro() {
+    backgroundMusic.currentTime = 0;
+    backgroundMusic.autoplay = true;
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+
+    formWindow.classList.toggle('intro');
+    
+    setTimeout(() => {
+        formWindow.classList.toggle('intro');
+        formWindow.classList.toggle('active');
+    }, 6000);
+}
 
 countryInput.addEventListener('change', onCountryChange);
 
@@ -42,6 +93,7 @@ function onCountryChange() {
 const registerForm = document.forms.register,
     loginForm = document.forms.login,
     succesfullBlock = document.getElementById('all-valid'),
+    succesfullLoginBlock = document.getElementById('all-valid-login'),
     registerBtn = document.getElementById('register'),
     loginBtn = document.getElementById('login');
 
@@ -102,11 +154,11 @@ function validatePassword(pass, confirm) {
 
 function validateDate(date) {
     const today = new Date();
-    today.setFullYear(today.getFullYear - 12);
+    today.setFullYear(today.getFullYear() - 12);
     if(date.value != '') {
-        const dateValue = new Date(date.value);
-        date.className = dateValue > today ? 'invalid' : 'valid';
-        return !(dateValue > today);
+        const dateValue = date.valueAsDate;
+        date.className = dateValue < today ? 'valid' : 'invalid';
+        return dateValue < today;
     }
     else {
         date.className = 'invalid';
@@ -120,14 +172,15 @@ function validateUsername(username) {
 }
 
 function validateSelects() {
-    selects.forEach(elem => {
-        if(elem.value == 'none') {
-            elem.className = 'invalid';
-            return false;
+    let validated = true;
+    for(const select of selects) {
+        if(select.value == 'none') {
+            select.className = 'invalid';
+            validated = false;
         }
-        else elem.className = 'valid';
-    });
-    return true;
+        else select.className = 'valid';
+    }
+    return validated;
 }
 
 registerForm.addEventListener('submit', (e) => {
@@ -144,16 +197,30 @@ registerForm.addEventListener('submit', (e) => {
 
     if(validates.every(validate => validate)) {
         registerForm.reset();
-        succesfullBlock.style.display = 'block';
+        laughSound.currentTime = 0;
+        laughSound.play();
+        succesfullBlock.classList.toggle('show')
         setTimeout(() => {
-            succesfullBlock.style.display = 'none';
-        }, 3000);
+            succesfullBlock.classList.toggle('show')
+        }, 6000);
     } 
 })
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    validateLoginPassword(loginForm.pass);
-    validateUsername(loginForm.username);
+    const validates = [
+        validateLoginPassword(loginForm.pass),
+        validateUsername(loginForm.username),
+    ];
+    
+    if(validates.every(validate => validate)) {
+        loginForm.reset();
+        goodSound.currentTime = 0;
+        goodSound.play();
+        succesfullLoginBlock.classList.toggle('show')
+        setTimeout(() => {
+            succesfullLoginBlock.classList.toggle('show')
+        }, 6000);
+    } 
 })
