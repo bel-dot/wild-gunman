@@ -11,11 +11,26 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-image: url('https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif');
-    background-color: black;
+    background-color: rgba(0,0,0, 1);
     background-position: fixed 0 0;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#start-button {
+    font-size: 3em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: white;
+    color: black;
 }
 
 #form-window {
@@ -23,7 +38,7 @@ body {
     margin: 20px 0;
     background-color: white;
     padding: 20px;
-    opacity: 0;
+    visibility: hidden;
     
     background-color: rgba(56, 56, 146, 0.753);
     color: white;
@@ -32,6 +47,7 @@ body {
 
 #form-window.intro {
     opacity: 1;
+    visibility: visible;
     animation: form-intro 1s linear;
 }
 
@@ -100,10 +116,11 @@ h1 {
 #form-window.active .intro-text {
     animation: text-outro 1s linear;
     opacity: 0;
+    z-index: -1;
 }
 
 #form-window.active {
-    opacity: 1;
+    visibility: visible;
 }
 
 

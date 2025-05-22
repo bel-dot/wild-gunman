@@ -3,12 +3,18 @@
 const selects = [ ...document.getElementsByTagName('select') ];
 const inputs = [ ...document.getElementsByTagName('input'), ...selects ];
 
+const fire = 'https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif';
+
 const formWindow = document.getElementById('form-window'),
     rememberCheckbox = document.getElementById('remember'),
+    startButton = document.getElementById('start-button'),
     backgroundMusic = new Audio('./thrash.mp3'),
     laughSound = new Audio('./laugh.mp3'),
     goodSound = new Audio('./good.mp3'),
     dontForget = new Audio('./dont_forget.mp3');
+
+backgroundMusic.muted = true;
+backgroundMusic.autoplay = true;
 
 let forgot = false;
 console.log(backgroundMusic.volume);
@@ -30,8 +36,8 @@ function returnBackgroundMusic() {
     
     const intervalId = setInterval(() => {
         backgroundMusic.volume += 0.01;
-        if(backgroundMusic.volume >= 1) {
-            backgroundMusic.volume = 1;
+        if(backgroundMusic.volume >= 0.5) {
+            backgroundMusic.volume = 0.5;
             clearInterval(intervalId);
         }
     }, 5);
@@ -54,19 +60,29 @@ selects.forEach(select => {
 const countryInput = document.getElementById('country'),
     cityInput = document.getElementById('city');
 
-window.addEventListener('load', () => {
+startButton.addEventListener('click', startPage);
+
+function startPage() {
     if(countryInput.value != '') {
         onCountryChange();
     }
     
+    startButton.hidden = true;
+    document.body.style.backgroundImage = `url('${fire}')`;
     
+    backgroundMusic.volume = 0.5;
+    laughSound.volume = 0.5;
+    goodSound.volume = 0.5;
+    dontForget.volume = 0.5;
+
     setTimeout(runIntro, 500);
-})
+}
 
 function runIntro() {
+    backgroundMusic.preload = 'auto';
     backgroundMusic.currentTime = 0;
-    backgroundMusic.autoplay = true;
     backgroundMusic.loop = true;
+    backgroundMusic.muted = false;
     backgroundMusic.play();
 
     formWindow.classList.toggle('intro');
