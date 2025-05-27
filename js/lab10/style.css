@@ -3,6 +3,10 @@
     font-weight: bold;
 }
 
+:root {
+    --background: rgba(56, 56, 157, 0.75);
+}
+
 body {
     width: 100vw;
     margin: 0;
@@ -15,6 +19,7 @@ body {
     background-position: fixed 0 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #start-button {
@@ -40,7 +45,7 @@ body {
     padding: 20px;
     visibility: hidden;
     
-    background-color: rgba(56, 56, 146, 0.753);
+    background-color: var(--background);
     color: white;
     box-shadow: 0 0 3px black;
 }
@@ -166,13 +171,21 @@ form {
 
 input, select, button {
     padding: 10px;
-    margin-bottom: 20px;
     color: inherit;
-    background-color: inherit;
+    background-color: transparent;
     border: 3px solid white;
     font-size: 1.5em;
     
     transition: border 0.5s cubic-bezier();
+}
+
+option {
+    background-color: black;
+    color: white;
+}
+
+#form-window input, #form-window select, #form-window button, #filter-window input, #filter-window select, #filter-window button {
+    margin-bottom: 20px;
 }
 
 #all-valid {
@@ -276,6 +289,116 @@ input.invalid + small, select.invalid + small {
 
 #register-form {
     display: none;
+}
+
+#boom-img {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 999;
+}
+
+#main {
+    width: 100%;
+    height: 100%; 
+    padding: 10px;
+    color: white;
+    
+    display: none;
+    grid-template-columns: 360px calc(100% - 360px);
+    grid-template-rows: 100px calc(100% - 100px);
+    gap: 10px;
+}
+
+#main nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 50px);
+    padding: 20px;
+    background-color: var(--background);
+    grid-column: 1 / 3;
+    grid-row-start: 1;
+}
+
+#sort-div {
+    display: flex;
+}
+
+#sort-div > select {
+    margin: 0 20px;
+}
+
+#logout {
+    font-size: 2em;
+    color: white;
+}
+
+#filter-window {
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+    padding: 30px;
+    grid-row: 2 / span 1;
+}
+
+#reverse-check {
+    appearance: none;
+    border: none;
+    position: relative;
+    padding: 0;
+    transition: rotate 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#reverse-check::before {
+    content: '👇';
+    font-size: 2em;
+}
+
+#reverse-check:checked {
+    rotate: 540deg;
+}
+
+#friends-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.friend-card {
+    background-color: var(--background);
+    height: fit-content;
+    min-width: 300px;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fire {
+    opacity: 0;
+}
+
+.friend-card .friend-avatar {
+    width: 150px;
+    height: 150px;
+    position: relative;
 }
 
 @media screen and (max-width: 734px) {

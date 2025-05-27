@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>JS. Lab 9.</title>
+    <link rel="icon" href="./favicon.png">
+    <title>Thrashbook</title>
 </head>
 <body>
     <button type="button" id="start-button">Start.</button>
+    <img src="explosion-boom.gif" id="boom-img" alt="boom">
     <div id="form-window">
         <h1>Trashbook</h1>
         <div class="intro-text" id="intro1">Presented by Bel.Industries</div>
@@ -47,7 +49,7 @@
                 <small>You must be at least 12 years old</small>
 
                 <label for="sex">Sex</label>
-                <select name="sex" required id="sex">
+                <select class="input-select" name="sex" required id="sex">
                     <option value="none" selected>Three times a week</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -55,7 +57,7 @@
                 <small>😏</small>
 
                 <label for="country">Country</label>
-                <select name="country" required id="country">
+                <select class="input-select" name="country" required id="country">
                     <option value="none" selected>Arstotzka</option>
                     <option value="ukraine">Ukraine 🇺🇦</option>
                     <option value="poland">Poland</option>
@@ -67,7 +69,7 @@
                 <small>🫡</small>
 
                 <label for="city">City</label>
-                <select name="city" required id="city">
+                <select class="input-select" name="city" required id="city">
                     <option class="ukraine-option" value="chernivtsi" selected>Chernivtsi</option>
                     <option class="ukraine-option" value="khmelnytskyi">Khmelnytskyi</option>
                     <option class="ukraine-option" value="kyiv">Kyiv</option>
@@ -132,6 +134,40 @@
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+    <div id="main">
+        <nav>
+            <input type="text" id="friends-search">
+            <div id="sort-div">
+                <select id="sort-select">
+                    <option value="relevance">By relevance</option>
+                    <option value="alphabet">Alphabetical</option>
+                    <option value="age">By age</option>
+                    <option value="registered">By date registered</option>
+                </select>
+                <input type="checkbox" id="reverse-check">
+            </div>
+            <span id="username"></span>
+            <a id="logout" href="#">Logout</a>
+        </nav>
+        <div id="filter-window">
+            <h1>Filters</h1>
+            <label for="age-min">Minimum age</label>
+            <input name="age-min" type="number" class="filter-input">
+            <label for="age-max">Maximum age</label>
+            <input name="age-max" type="number" class="filter-input">
+            <label for="city">Find them by city</label>
+            <input type="text" name="city" class="filter-input">
+            <label for="email">Find them by email</label>
+            <input type="text" name="email" class="filter-input">
+            <div>
+                <label for="thrashed">Exclude thrashed ones</label>
+                <input type="radio" name="thrashed" class="filter-input">
+            </div>
+        </div>
+        <div id="friends-container">
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>

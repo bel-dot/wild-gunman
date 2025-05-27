@@ -1,6 +1,6 @@
 'use strict'
 
-const selects = [ ...document.getElementsByTagName('select') ];
+const selects = [ ...document.getElementsByClassName('form-select') ];
 const inputs = [ ...document.getElementsByTagName('input'), ...selects ];
 
 const fire = 'https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif';
@@ -17,7 +17,6 @@ backgroundMusic.muted = true;
 backgroundMusic.autoplay = true;
 
 let forgot = false;
-console.log(backgroundMusic.volume);
 
 rememberCheckbox.addEventListener('change', () => {
     if(!forgot && rememberCheckbox.checked) {
@@ -63,6 +62,11 @@ const countryInput = document.getElementById('country'),
 startButton.addEventListener('click', startPage);
 
 function startPage() {
+    if(localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
+        formWindow.style.display = 'none';
+        startService();
+    }
+
     if(countryInput.value != '') {
         onCountryChange();
     }
@@ -113,7 +117,6 @@ const registerForm = document.forms.register,
     registerBtn = document.getElementById('register'),
     loginBtn = document.getElementById('login');
 
-console.log(registerForm);
 
 registerBtn.addEventListener('click', () => {
     loginBtn.classList.remove('active');
@@ -231,12 +234,19 @@ loginForm.addEventListener('submit', (e) => {
     ];
     
     if(validates.every(validate => validate)) {
+        if(loginForm.remember.checked) {
+            localStorage.setItem('username', loginForm.username);
+            localStorage.setItem('password', loginForm.password);
+        }
         loginForm.reset();
-        goodSound.currentTime = 0;
-        goodSound.play();
-        succesfullLoginBlock.classList.toggle('show')
-        setTimeout(() => {
-            succesfullLoginBlock.classList.toggle('show')
-        }, 6000);
+        formWindow.style.display = 'none';
+        startService();
     } 
+});
+
+window.addEventListener('unload', () => {
+    if(!loginForm.remember.checked) {
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+    }
 })
