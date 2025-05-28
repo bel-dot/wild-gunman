@@ -6,6 +6,7 @@ const inputs = [ ...document.getElementsByTagName('input'), ...selects ];
 const fire = 'https://media.tenor.com/3QNUdJR3PUgAAAAi/twitch-youngmulti.gif';
 
 const formWindow = document.getElementById('form-window'),
+    formsDiv = document.getElementById('forms-div'),
     rememberCheckbox = document.getElementById('remember'),
     startButton = document.getElementById('start-button'),
     backgroundMusic = new Audio('./thrash.mp3'),
@@ -16,7 +17,7 @@ const formWindow = document.getElementById('form-window'),
 backgroundMusic.muted = true;
 backgroundMusic.autoplay = true;
 
-let forgot = false;
+let forgot = localStorage.getItem('remember') === 'yes';
 
 rememberCheckbox.addEventListener('change', () => {
     if(!forgot && rememberCheckbox.checked) {
@@ -62,10 +63,6 @@ const countryInput = document.getElementById('country'),
 startButton.addEventListener('click', startPage);
 
 function startPage() {
-    if(localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
-        formWindow.style.display = 'none';
-        startService();
-    }
 
     if(countryInput.value != '') {
         onCountryChange();
@@ -78,22 +75,33 @@ function startPage() {
     laughSound.volume = 0.5;
     goodSound.volume = 0.5;
     dontForget.volume = 0.5;
+    playBackground();
 
-    setTimeout(runIntro, 500);
+    if(localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
+        formWindow.style.display = 'none';
+        startService();
+    }
+    else {
+        setTimeout(runIntro, 500);
+    }
 }
 
-function runIntro() {
+function playBackground() {
     backgroundMusic.preload = 'auto';
     backgroundMusic.currentTime = 0;
     backgroundMusic.loop = true;
     backgroundMusic.muted = false;
     backgroundMusic.play();
+}
 
+function runIntro() {
     formWindow.classList.toggle('intro');
+    formsDiv.style.visibility = 'hidden';
     
     setTimeout(() => {
         formWindow.classList.toggle('intro');
         formWindow.classList.toggle('active');
+        formsDiv.style.visibility = 'visible';
     }, 6000);
 }
 
@@ -194,10 +202,14 @@ function validateSelects() {
     let validated = true;
     for(const select of selects) {
         if(select.value == 'none') {
-            select.className = 'invalid';
+            select.classList.remove('valid');
+            select.classList.add('invalid');
             validated = false;
         }
-        else select.className = 'valid';
+        else {
+            select.classList.remove('invalid');
+            select.classList.add('valid');
+        }
     }
     return validated;
 }
@@ -235,17 +247,22 @@ loginForm.addEventListener('submit', (e) => {
     
     if(validates.every(validate => validate)) {
         if(loginForm.remember.checked) {
-            localStorage.setItem('username', loginForm.username);
-            localStorage.setItem('password', loginForm.password);
+            localStorage.setItem('remember', 'yes');
         }
+        localStorage.setItem('username', loginForm.username.value);
+        localStorage.setItem('password', loginForm.pass.value);
         loginForm.reset();
+        
+        dontForget.pause();
+        backgroundMusic.play();
         formWindow.style.display = 'none';
+        formWindow.classList.remove('active');
         startService();
     } 
 });
 
 window.addEventListener('unload', () => {
-    if(!loginForm.remember.checked) {
+    if(localStorage.getItem('remember') != 'yes') {
         localStorage.removeItem('username');
         localStorage.removeItem('password');
     }

@@ -136,7 +136,7 @@
     </div>
     <div id="main">
         <nav>
-            <input type="text" id="friends-search">
+            <input type="text" id="friends-search" placeholder="Search friends">
             <div id="sort-div">
                 <select id="sort-select">
                     <option value="relevance">By relevance</option>
@@ -147,21 +147,21 @@
                 <input type="checkbox" id="reverse-check">
             </div>
             <span id="username"></span>
-            <a id="logout" href="#">Logout</a>
+            <button type="button" id="logout" href="#">Logout</button>
         </nav>
         <div id="filter-window">
             <h1>Filters</h1>
             <label for="age-min">Minimum age</label>
-            <input name="age-min" type="number" class="filter-input">
+            <input name="age-min" type="number" min="0" max="150" class="filter-input">
             <label for="age-max">Maximum age</label>
-            <input name="age-max" type="number" class="filter-input">
+            <input name="age-max" type="number" min="0" max="150" class="filter-input">
             <label for="city">Find them by city</label>
             <input type="text" name="city" class="filter-input">
             <label for="email">Find them by email</label>
             <input type="text" name="email" class="filter-input">
             <div>
                 <label for="thrashed">Exclude thrashed ones</label>
-                <input type="radio" name="thrashed" class="filter-input">
+                <input type="checkbox" name="thrashed" class="filter-input">
             </div>
         </div>
         <div id="friends-container">
