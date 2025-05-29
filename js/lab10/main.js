@@ -1,11 +1,14 @@
 const API = 'https://randomuser.me/api/?results=150';
 const friendsContainer = document.getElementById('friends-container');
+const pagesDiv = document.getElementById('pages');
 const mainWindow = document.getElementById('main'),
     searchBar = document.getElementById('friends-search'),
     sortSelect = document.getElementById('sort-select'),
     logoutButton = document.getElementById('logout'),
     filterInputs = [...document.getElementsByClassName('filter-input')],
-    reverseCheck = document.getElementById('reverse-check');
+    reverseCheck = document.getElementById('reverse-check'),
+    fetchError = document.getElementById('fetch-error'),
+    notFound = document.getElementById('not-found');
 
 const explosionSound = new Audio('./explosion.mp3'),
     vanishSound = new Audio('./vanish.mp3'),
@@ -21,12 +24,21 @@ let friends = [],
 reverseCheck.addEventListener('change', () => {
     resetPages();
     reversed *= -1;
+    updateURL('reversed', (reversed < 0) ? 'true' : '');
     sortFriends();
 });
 
 
 function renderFriends(arr) {
+    renderPages();
     friendsContainer.innerHTML = '';
+    if(arr.length === 0) {
+        notFound.style.display = 'flex';
+        return;
+    }
+    else {
+        notFound.style.display = 'none';
+    }
     const friendsSlice = arr.slice(30 * (start - 1), 30 * end);
 
     for(const friend of friendsSlice) {
@@ -58,6 +70,36 @@ function renderFriends(arr) {
         friendsContainer.appendChild(card);
     }
 }
+
+function renderPages() {
+    pages = Math.floor(friends.length / 30);
+    if(pages === 0) {
+        updateURL('pages', '');
+    }
+    else {
+        if(start === end) {
+            updateURL('pages', '');
+            updateURL('page', start);
+        }
+        else {
+            updateURL('page', '');
+            updateURL('pages', `${start}-${end}`);
+        }
+    }
+    pagesDiv.innerHTML = '';
+    for(let i = 1; i <= pages; i++) {
+        pagesDiv.innerHTML += `
+            <a class="page ${(start <= i && i <= end ? 'active' : '')}">${i}</a>
+        `;
+    }
+}
+
+pagesDiv.addEventListener('click', (e) => {
+    const page = e.target.closest('.page').textContent;
+    start = page;
+    end = page;
+    sortFriends();
+})
 
 function thrashFriend(e) {
     const parent = e.target.parentElement;
@@ -157,6 +199,15 @@ function getParams() {
         sorted = true;
         sortSelect.value = url.searchParams.get('sort');
     }
+    reversed = url.searchParams.has('reversed') ? -1 : 1;
+    reverseCheck.checked = reversed < 0;
+    if(url.searchParams.has('page')) {
+        start = url.searchParams.get('page');
+        end = start;
+    }
+    if(url.searchParams.has('pages')) {
+        [start, end] = url.searchParams.get('pages').split('-');
+    }
     if(url.searchParams.has('search')) {
         searched = true;
         searchBar.value = url.searchParams.get('search');
@@ -179,12 +230,13 @@ function getParams() {
     }
     if(url.searchParams.has('thrashed')) {
         filtered = true;
-        filterInputs[4].checked = url.searchParams.get('thrashed');
+        filterInputs[4].checked = url.searchParams.has('thrashed');
     }
     
     if(searched) searchFriends();
-    if(filtered) filterFriends();
-    if(sorted) sortFriends();
+    else if(filtered) filterFriends();
+    else if(sorted) sortFriends();
+    else renderFriends(friends);
 }
 
 
@@ -199,13 +251,14 @@ for(const filter of filterInputs) {
 
 async function startService() {
     explode();
-    mainWindow.style.display = 'grid';
+    mainWindow.classList.add('active');
     if(localStorage.getItem('thrashed') != null) {
         thrashed = localStorage.getItem('thrashed').split(',');
     }
 
     if(localStorage.getItem('friends') != null) {
         friends = JSON.parse(localStorage.getItem('friends'));
+        getParams();
     }
     else {
         try {
@@ -213,14 +266,12 @@ async function startService() {
             const json = await data.json();
             friends = json.results;
             localStorage.setItem('friends', JSON.stringify([...friends]));
+            getParams();
         }
         catch {
-            console.log('Fetch error');
+            fetchError.style.display = 'flex';
         }
     }
-    pages = Math.floor(friends.length / 30);
-    renderFriends(friends);
-    getParams();
 }
 
 function updateURL(key, value) {
@@ -263,7 +314,7 @@ function debounce(func, timeout = 500) {
 }
 
 const loadMore = debounce(() => {
-    if(window.innerHeight + window.pageYOffset >= document.body.offsetHeight && end <= pages) {
+    if(window.innerHeight + window.pageYOffset >= document.body.offsetHeight && end < pages) {
         end++;
         sortFriends();
     }
@@ -273,15 +324,12 @@ window.addEventListener('scroll', loadMore);
 
 function logout() {
     localStorage.clear();
+    friends = [];
+    thrashed= [];
     
-    mainWindow.style.display = 'none';
+    mainWindow.classList.remove('active');
     formWindow.style.display = 'block';
     formWindow.style.visibility = 'visible';
 }
 
 logoutButton.addEventListener('click', logout);
-
-
-window.addEventListener('unload', () => {
-    localStorage.removeItem('friends');
-})

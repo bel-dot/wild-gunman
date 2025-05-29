@@ -10,6 +10,7 @@ const formWindow = document.getElementById('form-window'),
     rememberCheckbox = document.getElementById('remember'),
     startButton = document.getElementById('start-button'),
     backgroundMusic = new Audio('./thrash.mp3'),
+    tabIcon = document.getElementById('icon'),
     laughSound = new Audio('./laugh.mp3'),
     goodSound = new Audio('./good.mp3'),
     dontForget = new Audio('./dont_forget.mp3');
@@ -25,6 +26,7 @@ rememberCheckbox.addEventListener('change', () => {
         backgroundMusic.pause();
         dontForget.currentTime = 0;
         dontForget.play();
+        tabIcon.href = './favicon2.png';
     }
 });
 
@@ -33,6 +35,7 @@ dontForget.addEventListener('ended', returnBackgroundMusic)
 function returnBackgroundMusic() {
     backgroundMusic.volume = 0;
     backgroundMusic.play();
+    tabIcon.href = './favicon.png';
     
     const intervalId = setInterval(() => {
         backgroundMusic.volume += 0.01;
@@ -252,7 +255,10 @@ loginForm.addEventListener('submit', (e) => {
         localStorage.setItem('username', loginForm.username.value);
         localStorage.setItem('password', loginForm.pass.value);
         loginForm.reset();
+        loginForm.pass.className = '';
+        loginForm.username.className = '';
         
+        tabIcon.href = './favicon.png';
         dontForget.pause();
         backgroundMusic.play();
         formWindow.style.display = 'none';
@@ -263,7 +269,8 @@ loginForm.addEventListener('submit', (e) => {
 
 window.addEventListener('unload', () => {
     if(localStorage.getItem('remember') != 'yes') {
-        localStorage.removeItem('username');
-        localStorage.removeItem('password');
+        localStorage.clear();
+        friends = [];
+        thrashed = [];
     }
 })
