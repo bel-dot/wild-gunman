@@ -1,0 +1,414 @@
+/*                              Gunman style                                 */
+.gunman {
+  position: absolute;
+  left: 400px;
+  bottom: 150px;
+  z-index: 1;
+  scale: 3;
+  background: url(../img/gunman.png) no-repeat;
+}
+
+.hat {
+  position: absolute;
+  z-index: 0;
+  scale: 3;
+}
+
+.shootable {
+  cursor: url(../img/revolver.ico), pointer;
+}
+
+@keyframes gunman-walk {
+  from {
+    left: 850px;
+  }
+  to {
+    left: 400px;
+  }
+}
+
+
+.gunman-level-1 {
+  background-position: 0 0;
+  width: 32px;
+  height: 64px;
+}
+
+.gunman-level-1__walk {
+  animation: gunman-level-1__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-1__standing {
+  background-position: -100px 0;
+}
+
+.gunman-level-1__ready {
+  background-position: -202px 0;
+}
+
+.gunman-level-1__shooting {
+  animation: gunman-level-1__duel 0.5s step-start;
+  animation-iteration-count: 1;
+  background-position: -436px 0;
+}
+
+.gunman-level-1__death {
+  animation: gunman-level-1__death 1s steps(2);
+  background-position: -372px 0;
+  width: 32px;
+}
+
+.hat-level-1 {
+  bottom: 222px;  
+  left: 403px;
+  width: 26px;
+  height: 64px;
+  background: url(../img/gunman.png);
+  background-position: -406px 0;
+  animation: hat-level-1__fly 1s linear;
+}
+
+@keyframes gunman-level-1__walk {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -98px 0;
+  }
+}
+
+@keyframes gunman-level-1__duel {
+  from {
+    background-position: -236px 0;
+  }
+  to {
+    background-position: -301px 0;
+  }
+}
+
+@keyframes gunman-level-1__death {
+  from {
+    background-position: -338px 0;
+    width: 32px;
+    bottom: 160px;
+  }
+  to {
+    background-position: -404px 0;
+    width: 26px;
+    bottom: 150px;
+  }
+}
+
+@keyframes hat-level-1__fly {
+  from {
+    bottom: 502px;
+  }
+  to {
+    bottom: 222px;
+  }
+}
+
+.gunman-level-2 {
+  background-position: 0 -68px;
+  width: 32px;
+  height: 72px;
+}
+
+.gunman-level-2__walk {
+  animation: gunman-level-2__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-2__standing {
+  background-position: 0 -68px;
+}
+
+.gunman-level-2__ready {
+  background-position: -102px -68px;
+  width: 28px;
+}
+
+.gunman-level-2__shooting {
+  animation: gunman-level-2__duel 0.5s steps(4);
+  animation-iteration-count: 1;
+  background-position: -271px -68px;
+}
+
+.gunman-level-2__death {
+  animation: gunman-level-2__death 1s steps(2);
+  background-position: -239px -68px;
+  width: 28px;
+  height: 73px;
+}
+
+@keyframes gunman-level-2__walk {
+  from {
+    background-position: 0 -68px;
+  }
+  to {
+    background-position: -102px -68px;
+  }
+}
+
+@keyframes gunman-level-2__duel {
+  from {
+    background-position: -132px -68px;
+    width: 22px;
+  }
+  to {
+    background-position: -237px -68px;
+    width: 28px;
+  }
+}
+
+@keyframes gunman-level-2__death {
+  from {
+    background-position: -209px -68px;
+    width: 32px;
+  }
+  to {
+    background-position: -267px -68px;
+    width: 26px;
+  }
+}
+
+.gunman-level-3 {
+  background-position: 0 -144px;
+  width: 26px;
+  height: 80px;
+}
+
+.gunman-level-3__walk {
+  animation: gunman-level-3__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-3__standing {
+  background-position: 0 -144px;
+}
+
+.gunman-level-3__ready {
+  background-position: -84px -144px;
+  width: 28px;
+}
+
+.gunman-level-3__shooting {
+  animation: gunman-level-3__duel 0.5s steps(3);
+  animation-iteration-count: 1;
+  background-position: -174px -144px;
+}
+
+.gunman-level-3__death {
+  animation: gunman-level-3__death 0.5s steps(2);
+  background-position: -205px -144px;
+  width: 32px;
+}
+
+@keyframes gunman-level-3__walk {
+  from {
+    background-position: 0 -144px;
+  }
+  to {
+    background-position: -82px -144px;
+  }
+}
+
+@keyframes gunman-level-3__duel {
+  from {
+    background-position: -114px -144px;
+    width: 22px;
+  }
+  to {
+    background-position: -203px -144px;
+    width: 28px;
+  }
+}
+
+@keyframes gunman-level-3__death {
+  from {
+    background-position: -173px -144px;
+    width: 32px;
+  }
+  to {
+    background-position: -237px -144px;
+    width: 26px;
+  }
+}
+
+.hat-level-3 {
+  bottom: 600px;  
+  left: 409px;
+  width: 16px;
+  height: 80px;
+  background: url(../img/gunman.png);
+  background-position: -239px -144px;
+  animation: hat-level-3__fly 0.5s linear;
+}
+
+@keyframes hat-level-3__fly {
+  from {
+    bottom: 367px;
+  }
+  to {
+    bottom: 600px;
+  }
+}
+
+.gunman-level-4 {
+  background-position: 0 -228px;;
+  width: 32px;
+  height: 64px;
+}
+
+.gunman-level-4__walk {
+  animation: gunman-level-4__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-4__standing {
+  background-position: 0 -228px;;
+}
+
+.gunman-level-4__ready {
+  background-position: -102px -228px;;
+  width: 31px;
+}
+
+.gunman-level-4__shooting {
+  animation: gunman-level-4__duel 0.5s steps(3);
+  animation-iteration-count: 1;
+  background-position: -174px -228px;;
+}
+
+.gunman-level-4__death {
+  animation: gunman-level-4__death 0.5s steps(2);
+  background-position: -234px -228px;;
+  width: 32px;
+}
+
+@keyframes gunman-level-4__walk {
+  from {
+    background-position: 0 -228px;;
+  }
+  to {
+    background-position: -100px -228px;;
+  }
+}
+
+@keyframes gunman-level-4__duel {
+  from {
+    background-position: -135px -228px;;
+    width: 22px;
+  }
+  to {
+    background-position: -232px -228px;;
+    width: 28px;
+  }
+}
+
+@keyframes gunman-level-4__death {
+  from {
+    background-position: -202px -228px;;
+    width: 32px;
+  }
+  to {
+    background-position: -267px -228px;;
+    width: 26px;
+  }
+}
+
+.hat-level-4 {
+  bottom: 222px;  
+  left: 400px;
+  width: 30px;
+  height: 64px;
+  background: url(../img/gunman.png);
+  background-position: -268px -228px;;
+  animation: hat-level-4__fly 1s linear;
+}
+
+@keyframes hat-level-4__fly {
+  from {
+    bottom: 502px;
+  }
+  to {
+    bottom: 222px;
+  }
+}
+
+.gunman-level-5 {
+  background-position: 0 -296px;;
+  width: 32px;
+  height: 69px;
+}
+
+.gunman-level-5__walk {
+  animation: gunman-level-5__walk 1s steps(3) infinite, gunman-walk 5s linear;
+}
+
+.gunman-level-5__standing {
+  background-position: 0 -296px;;
+}
+
+.gunman-level-5__ready {
+  background-position: -102px -296px;;
+  width: 29px;
+}
+
+.gunman-level-5__shooting {
+  animation: gunman-level-5__duel 0.5s steps(3);
+  animation-iteration-count: 1;
+  background-position: -195px -296px;;
+  width: 29px;
+}
+
+.gunman-level-5__death {
+  animation: gunman-level-5__death 0.5s steps(3);
+  background-position: -260px -296px;;
+  width: 32px;
+}
+
+@keyframes gunman-level-5__walk {
+  from {
+    background-position: 0 -296px;;
+  }
+  to {
+    background-position: -100px -296px;;
+  }
+}
+
+@keyframes gunman-level-5__duel {
+  from {
+    background-position: -133px -296px;;
+  }
+  to {
+    background-position: -224px -296px;;
+  }
+}
+
+@keyframes gunman-level-5__death {
+  from {
+    background-position: -195px -296px;;
+    width: 29px;
+  }
+  to {
+    background-position: -292px -296px;;
+    width: 32px;
+  }
+}
+
+.hat-level-5 {
+  bottom: 196px;  
+  left: 406px;
+  width: 20px;
+  height: 69px;
+  background: url(../img/gunman.png);
+  background-position: -294px -296px;;
+  animation: hat-level-5__fly 1s linear;
+}
+
+@keyframes hat-level-5__fly {
+  from {
+    bottom: 502px;
+  }
+  to {
+    bottom: 196px;
+  }
+}

@@ -1,0 +1,98 @@
+/*                              Game menu style                             */
+.game-menu {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: url(../img/main-background.png) no-repeat;
+  background-size: contain;
+  background-position: 50% 0;
+}
+
+.game-menu__title {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  font-size: 70px;
+  text-transform: uppercase;
+  text-align: center;
+}
+/*                              End Game menu style                          */
+
+/*                              Buttons style                               */
+.button {
+  position: fixed;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%,-50%);
+
+  padding: 0;
+  border: 0;
+  outline: 0;
+
+  font-family: "Press Start 2P";
+  font-size: 20px;
+  text-transform: uppercase;
+
+  background: transparent;
+  color: #e20f0f;
+  cursor: pointer;
+}
+
+.button-restart {
+  display: none;
+  top: 90%;
+  z-index: 1001;
+}
+
+.button-next-level {
+  display: none;
+  top: 90%;
+  z-index: 1001;
+}
+
+.button:hover {
+  color: #000;
+}
+
+.button:active {
+  color: #000;
+}
+/*                              End Buttons style                           */
+
+/*                              Game win screen style                       */
+.win-screen {
+  display: none;
+   /* display: block;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  background: url(../img/win-bg.png) no-repeat;
+  background-size: contain;
+  background-position: 50% 0;
+}
+
+.win-screen__title {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+
+  transform: translate(-50%,-50%);
+
+  font-size: 50px;
+  line-height: 70px;
+  text-transform: uppercase;
+  text-align: center;
+}
