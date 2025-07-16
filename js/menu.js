@@ -21,6 +21,16 @@ function playSound(sound) {
     sound.play();
 }
 
+function startGameA() {
+    titleSound.pause();
+    gunmanA.classList.add('shot');
+    playSound(shotGunmanSound);
+    
+    setTimeout(startGame, 3000);
+}
+
+gunmanA.addEventListener('click', startGameA);
+
 function startMenu() {
     playSound(shotPlayerSound);
     introGunman.classList.remove('walking');

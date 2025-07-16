@@ -71,6 +71,30 @@
   background-position: -202px 0;
 }
 
+.game-a .menu-gunman.shot {
+  animation: gunman-a-lose step-end 1s forwards,
+  gunman-a-falling cubic-bezier(.56,-0.31,.37,.31) 2s forwards;
+
+}
+
+@keyframes gunman-a-lose {
+  from {
+    background-position: -336px 0;
+  }
+  to {
+    background-position: -372px 0;
+  }
+}
+
+@keyframes gunman-a-falling {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
 .game-b, .game-c {
   opacity: 0.5;
 }
@@ -166,14 +190,6 @@
   }
 }
 
-@keyframes gunman-lose {
-  from {
-    background-position: -336px 0;
-  }
-  to {
-    background-position: -372px 0;
-  }
-}
 
 @keyframes menu-move {
   from {
@@ -208,7 +224,7 @@
   animation: intro linear 9s forwards, 
   walking steps(3) 0s infinite none, 
   falling cubic-bezier(.56,-0.31,.37,.31) 3s forwards,
-  gunman-lose step-end 1s forwards;
+  gunman-a-lose step-end 1s forwards;
   
   animation-play-state: running, running, paused, paused;
   animation-delay: 0s, 0s, 100ms, 100ms;
