@@ -1,30 +1,233 @@
 /*                              Game menu style                             */
-.game-menu {
+#menu {
   display: block;
   box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
+  translate: 0 -100%;
 
   width: 100%;
   height: 100%;
-
-  background: url(../img/main-background.png) no-repeat;
-  background-size: contain;
-  background-position: 50% 0;
 }
 
-.game-menu__title {
-  position: fixed;
-  top: 15%;
+#menu.active {
+  animation: menu-move linear 2s forwards;
+}
+
+#logo-img {
+  width: 30%;
+  position: absolute;
+  top: 0;
   left: 50%;
-  transform: translate(-50%,-50%);
-
-  font-size: 70px;
-  text-transform: uppercase;
-  text-align: center;
+  translate: -50% 0;
 }
-/*                              End Game menu style                          */
+
+#menu-items {
+  display: flex;
+  width: 80%;
+  height: 30%;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.menu-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  scale: 3;
+}
+
+
+.menu-item span {
+  color: white;
+  font-size: 7px;
+  text-transform: uppercase;
+}
+
+
+.menu-gunman {
+  background-image: url('../img/gunman.png');
+  box-sizing: content-box;
+  margin: 5px;
+}
+
+.game-a, .game-c {
+  align-self: flex-end;
+}
+
+
+.game-a .menu-gunman {
+  background-position: -100px 0;
+  width: 32px;
+  height: 64px;
+}
+
+.game-a .menu-gunman:hover {
+  background-position: -202px 0;
+}
+
+.game-b, .game-c {
+  opacity: 0.5;
+}
+
+.game-b > div{
+  display: flex;
+  align-items: flex-end;
+}
+
+.game-b .menu-gunman:first-child {
+  background-position: -238px -64px;
+  width: 29px;
+  height: 76px;
+}
+
+.game-b .menu-gunman:last-child {
+  background-position: -234px -228px;
+  width: 32px;
+  height: 64px;
+}
+
+.game-c > div {
+  position: relative;
+  margin: 10px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-c .menu-gunman {
+  position: absolute;
+  top: 37%;
+  left: 40%;
+  translate: -50% -50%;
+  background-position: -100px -292px;
+  width: 32px;
+  height: 57px;
+  z-index: 2;
+  visibility: hidden;
+}
+
+.game-c .saloon-window {
+  background-image: url('../img/background.png');
+  z-index: 1;
+  width: 48px;
+  height: 53px;
+  background-position: -8px -370px;
+}
+
+/*
+.game-c > div:hover .saloon-window {
+  background-position: -65px -370px;
+  width: 64px;
+
+}
+
+.game-c > div:hover .menu-gunman {
+  visibility: visible;
+}
+*/
+
+@keyframes intro {
+  from {
+    left: 110%;
+  }
+  to {
+    left: 50%;
+  }
+
+}
+
+@keyframes walking {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -102px 0;
+  }
+}
+
+@keyframes falling {
+  0% {
+    bottom: 50%;
+  }
+  80% {
+    bottom: 98px;
+  }
+  90% {
+    bottom: 108px;
+  }
+  100% {
+    bottom: 96px;
+  }
+}
+
+@keyframes gunman-lose {
+  from {
+    background-position: -336px 0;
+  }
+  to {
+    background-position: -372px 0;
+  }
+}
+
+@keyframes menu-move {
+  from {
+    translate: 0 -100%;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+#intro-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-50%);
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+#intro-gunman {
+  background-image: url('../img/gunman.png');
+  background-position: -100px 0;
+  width: 32px;
+  height: 64px;
+  scale: 3;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  translate: -50% 50%;
+  
+  animation: intro linear 9s forwards, 
+  walking steps(3) 0s infinite none, 
+  falling cubic-bezier(.56,-0.31,.37,.31) 3s forwards,
+  gunman-lose step-end 1s forwards;
+  
+  animation-play-state: running, running, paused, paused;
+  animation-delay: 0s, 0s, 100ms, 100ms;
+}
+
+#intro-gunman.walking {
+  animation-play-state: running, running, paused, paused;
+  animation-duration: 9s, 400ms, 3s, 1s;
+}
+
+#intro-gunman.walking + #intro-hint, #intro-gunman.fallen + #intro-hint {
+  visibility: hidden;
+}
+
+#intro-gunman.fallen {
+  animation-play-state: paused, paused, running, running;
+}
+
+
 
 /*                              Buttons style                               */
 .button {

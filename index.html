@@ -11,8 +11,36 @@
   </head>
   <body>
     <section class="game-menu">
-      <h1 class="game-menu__title">Wild Gunman</h1>
-      <button type="button" class="button button-start-game">Start Game</button>
+      <div id="intro">
+        <div id="cursor"></div>
+        <div id="intro-gunman" class="walking"></div>
+        <span id="intro-hint">Shoot the gunman to start.</span>
+      </div>
+      <div id="menu">
+        <img src="https://static.wikia.nocookie.net/siivagunner/images/8/84/Wild_Gunman.jpg/revision/latest?cb=20210810210950" alt="logo" id="logo-img">
+        <div id="menu-items">
+          <div class="menu-item game-a">
+            <div class="menu-gunman"></div>
+            <span>1 OUTLAW</span>
+          </div>
+          <div class="menu-item game-b">
+            <div>
+              <div class="menu-gunman"></div>
+              <div class="menu-gunman"></div>
+            </div>
+            <span>2 OUTLAWS</span>
+            <span>COMING SOON</span>
+          </div>
+          <div class="menu-item game-c">
+            <div>
+              <div class="menu-gunman"></div>
+              <div class="saloon-window"></div>
+            </div>
+            <span>GANG</span>
+            <span>COMING SOON</span>
+          </div>
+        </div>
+      </div>
     </section>
     <!-- Game menu -->
 
@@ -53,6 +81,7 @@
     </section>
     <!-- Game win screen -->
 
+    <script src="js/menu.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

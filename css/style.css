@@ -10,8 +10,21 @@
 
 * {
   font-family: "Press Start 2P", system-ui;
+  image-rendering: pixelated;
+  cursor: none;
 }
 
 body {
   background-color: #000;
+}
+
+#cursor {
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  background-image: url('../img/revolver.ico');
+  background-size: cover;
+  pointer-events: none;
+  z-index: 9999;
+  
 }

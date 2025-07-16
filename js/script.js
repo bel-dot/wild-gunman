@@ -24,15 +24,7 @@ const buttonStart = document.querySelector('.button-start-game'),
     levelPanelNumber = document.querySelector('.score-panel__level_num'),
     gunman = document.querySelector('.gunman'),
     hat = document.querySelector('.hat'),
-    message = document.querySelector('.message'),
-    introSound = new Audio('sfx/intro.m4a'),
-    fireSound = new Audio('sfx/fire.m4a'),
-    shotGunmanSound = new Audio('sfx/shot-fall.m4a'),
-    shotPlayerSound = new Audio('sfx/shot.m4a'),
-    deathSound = new Audio('sfx/death.m4a'),
-    foulSound = new Audio('sfx/foul.m4a'),
-    winSound = new Audio('sfx/win.m4a'),
-    waitSound = new Audio('sfx/wait.m4a');
+    message = document.querySelector('.message');
 
 
 function updateStats() {
