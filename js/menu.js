@@ -26,7 +26,10 @@ function startGameA() {
     gunmanA.classList.add('shot');
     playSound(shotGunmanSound);
     
-    setTimeout(startGame, 3000);
+    setTimeout(() => {
+        startGame();
+        gunmanA.classList.remove('shot');
+    }, 3000);
 }
 
 gunmanA.addEventListener('click', startGameA);

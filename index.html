@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/revolver.ico">
     <title>Wild Gunman</title>
   </head>
   <body>
+    <div id="cursor"></div>
     <section class="game-menu">
       <div id="intro">
-        <div id="cursor"></div>
         <div id="intro-gunman" class="walking"></div>
         <span id="intro-hint">Shoot the gunman to start.</span>
       </div>
@@ -56,10 +57,10 @@
           <div class="time-panel__gunman">0.00</div>
         </div>
         <div class="score-panel">
-          <div class="score-panel__score">Score:<span class="score-panel__score_num">0</span></div>
-          <div class="score-panel__reward">Reward:<span class="score-panel__reward_num">3000</span>$</div>
-          <div class="score-panel__lives">Lives:<span class="score-panel__lives_num">3</span></div>
-          <div class="score-panel__level">Level <span class="score-panel__level_num">1</span></div>
+          <div class="score-panel__score"><div class="score-panel__score_num">0</div>Score</div>
+          <div class="score-panel__reward"><div class="score-panel__reward_wanted">$ <span class="score-panel__reward_num">3000</span></div>Reward</div>
+          <div class="score-panel__lives">L. <span class="score-panel__lives_num">3</span></div>
+          <div class="score-panel__level">W. <span class="score-panel__level_num">1</span></div>
         </div>
       </section>
       <!-- Game panels for scores -->

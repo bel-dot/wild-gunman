@@ -243,49 +243,6 @@
   animation-play-state: paused, paused, running, running;
 }
 
-
-
-/*                              Buttons style                               */
-.button {
-  position: fixed;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%,-50%);
-
-  padding: 0;
-  border: 0;
-  outline: 0;
-
-  font-family: "Press Start 2P";
-  font-size: 20px;
-  text-transform: uppercase;
-
-  background: transparent;
-  color: #e20f0f;
-  cursor: pointer;
-}
-
-.button-restart {
-  display: none;
-  top: 90%;
-  z-index: 1001;
-}
-
-.button-next-level {
-  display: none;
-  top: 90%;
-  z-index: 1001;
-}
-
-.button:hover {
-  color: #000;
-}
-
-.button:active {
-  color: #000;
-}
-/*                              End Buttons style                           */
-
 /*                              Game win screen style                       */
 .win-screen {
   display: none;

@@ -9,8 +9,7 @@ let score = 0,
     lives = 3,
     gunmanTime = 150;
 
-const buttonStart = document.querySelector('.button-start-game'),
-    buttonRestart = document.querySelector('.button-restart'),
+const buttonRestart = document.querySelector('.button-restart'),
     buttonNext = document.querySelector('.button-next-level'),
     gameMenu = document.querySelector('.game-menu'),
     gameWrapper = document.querySelector('.wrapper'),
@@ -48,15 +47,13 @@ function startGame() {
     }, 500);
 }
 
-buttonStart.onclick = startGame;
-
 function restartGame() {
     deathSound.pause();
     foulSound.pause();
     gameWrapper.style.display = 'none';
     timePanelPlayer.textContent = '0.00';
     buttonRestart.style.display = 'none';
-    gameScreen.classList.remove('game-screen--death');
+    gameScreen.classList.remove('game-screen--death', 'game-screen--foul');
     gunman.classList.remove(`gunman-level-${level}__shooting`);
     gunman.classList.remove(`gunman-level-${level}__standing`)
     message.classList.remove('message--dead');
@@ -67,7 +64,7 @@ function restartGame() {
     }, 500);
 }
 
-buttonRestart.onclick = restartGame;
+buttonRestart.addEventListener('click', restartGame);
 
 function gameOver() {
     message.style.display = 'none';
@@ -90,7 +87,7 @@ function nextLevel() {
     gunman.classList.remove(`gunman-level-${level}`);
     level++;
     if(level == 6) {
-        winGame();
+        location.reload();
         return;
     }
     gunman.classList.add(`gunman-level-${level}`);
@@ -254,6 +251,7 @@ function playerShootsEarly() {
     foulSound.currentTime = 0;
     foulSound.play();
     
+    gameScreen.classList.add('game-screen--foul');
     message.classList.toggle('message--dead');
     message.textContent = 'Foul!!!';
     const intervalId = setInterval(() => {

@@ -3,12 +3,10 @@
 .wrapper {
   display: none;
   position: fixed;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%,-50%);
-
-  height: 750px;
-  width: 900px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   box-sizing: border-box;
 }
@@ -18,37 +16,29 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  translate: -50% -50%;
 
   box-sizing: border-box;
-  width: 800px;
-  height: 480px;
+  width: 1280px;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
 
-  background: url(../img/bg.png) no-repeat;
-  background-size: cover;
+  background: url(../img/background.png) no-repeat;
+  background-size: 301% auto;
+  background-position: left top;
 }
+
 /*                              End Main game screen style                   */
 
 /*                              Screen death style                          */
 .game-screen--death {
-  animation: 4s player-death linear;
+  background-position: top;
 }
 
-@keyframes player-death {
-  0% {
-  box-shadow: inset 0 0 400px rgba(215, 35, 0, 0.5);
-  }
-  20% {
-  box-shadow: inset 0 0 300px rgba(215, 35, 0, 0.5);
-  }
-  40% {
-  box-shadow: inset 0 0 200px rgba(215, 35, 0, 0.5);
-  }
-  100% {
-  box-shadow: inset 0 0 100px rgba(215, 35, 0, 0.5);
-  }
+.game-screen--foul {
+  background-position: right top;
 }
+
 
 /*                              Screen win style                          */
 .game-screen--shot {
@@ -110,6 +100,7 @@
   height: 68px;
   background: url(../img/fire-right.png) no-repeat;
   left: 60%;
+  top: 60%;
 }
 
 .message--dead,
@@ -118,7 +109,8 @@
   top: 30%;
 
   font-family: "Press Start 2P";
-  font-size: 30px;
+  font-size: 32px;
+  text-transform: uppercase;
   color: #fff;
 }
 /*                              End Alert messages style                     */
@@ -126,11 +118,12 @@
 /*                              Game panels for scores style                 */
 .white-line {
   position: absolute;
-  left: 50px;
-  top: 10%;
+  left: 50%;
+  top: 8%;
   z-index: 700;
-  width: 800px;
+  width: 1280px;
   border-bottom: 2px solid #fff;
+  transform: translateX(-50%);
 }
 
 .game-panels {
@@ -143,7 +136,7 @@
   padding: 10px;
 
   font-family: "Press Start 2P";
-  font-size: 25px;
+  font-size: 32px;
   text-transform: uppercase;
   text-align: center;
   color: #80d010;
@@ -152,7 +145,6 @@
 .time-panel {
   position: absolute;
   left: 70%;
-  top: 2px;
   z-index: 700;
 }
 
@@ -163,13 +155,13 @@
 }
 
 .time-panel__you  {
-  padding: 10px 0;
+  padding: 8px 0 21px 0;
 }
 
 .players-panel {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 8%;
   box-sizing: border-box;
   transform: translate(-50%,-50%);
   z-index: 700;
@@ -195,31 +187,85 @@
   z-index: 700;
   box-sizing: border-box;
   position: absolute;
-  left: 15%;
-  top: 85%;
+  left: 10%;
+  bottom: 5%;
+}
+
+.score-panel__score_num {
+  color: white;
 }
 
 .score-panel__reward {
   z-index: 700;
   box-sizing: border-box;
   position: absolute;
-  left: 50%;
+  left: 80%;
   top: 85%;
+}
+
+.score-panel__reward_wanted {
+  font-size: 3em;
+  font-family: 'Old Town';
+  color: white;
+}
+
+.score-panel__reward_num {
+  color: #80d010;
+  font-family: inherit;
 }
 
 .score-panel__level {
   z-index: 700;
   box-sizing: border-box;
   position: absolute;
-  left: 10%;
-  top: 12%;
+  left: 60%;
+  top: 85%;
 }
 
 .score-panel__lives {
   z-index: 700;
   box-sizing: border-box;
   position: absolute;
-  left: 10%;
-  top: 4%;
+  left: 60%;
+  top: 90%;
 }
-/*                              End Game panels for scores style             */
+
+/*                              Buttons style                               */
+.button {
+  position: fixed;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%,-50%);
+
+  padding: 0;
+  border: 0;
+  outline: 0;
+
+  font-family: "Press Start 2P";
+  font-size: 32px;
+  text-transform: uppercase;
+
+  background: transparent;
+  color: #920a0a;
+  cursor: pointer;
+}
+
+.button-restart {
+  display: none;
+  top: 90%;
+  z-index: 1001;
+}
+
+.button-next-level {
+  display: none;
+  top: 90%;
+  z-index: 1001;
+}
+
+.button:hover {
+  color: #000;
+}
+
+.button:active {
+  color: #000;
+}
