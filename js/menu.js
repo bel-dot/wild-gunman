@@ -1,6 +1,7 @@
 const introGunman = document.getElementById('intro-gunman');
 const menu = document.getElementById('menu');
-const cursor = document.getElementById('cursor');
+const cursor = document.getElementById('cursor'),
+    shot = document.getElementById('shot');
 const gunmanA = document.querySelector('.game-a .menu-gunman');
 const introSound = new Audio('sfx/intro.m4a'),
     titleSound = new Audio('sfx/title.m4a'),
@@ -54,5 +55,18 @@ function updateCursor(e) {
     cursor.style.left = `${mouseX}px`;
 }
 
+function shoot(e) {
+    shot.src = '';
+    const mouseY = e.clientY;
+    const mouseX = e.clientX;
+
+    shot.style.display = 'initial';
+    shot.src = 'img/shot.gif';
+    shot.style.top = `${mouseY}px`;
+    shot.style.left = `${mouseX}px`;
+    
+}
+
 window.addEventListener('mousemove', updateCursor);
+window.addEventListener('click', shoot);
 introGunman.addEventListener('click', startMenu);

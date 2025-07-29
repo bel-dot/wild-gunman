@@ -33,3 +33,10 @@ body {
   z-index: 9999;
   
 }
+
+#shot {
+  display: none;
+  scale: 3;
+  position: absolute;
+  z-index: 9998;
+}
