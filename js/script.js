@@ -6,6 +6,7 @@ let score = 0,
     reward = 3000,
     bonus = 0,
     level = 1,
+    wins = 0,
     lives = 3,
     gunmanTime = 150;
 
@@ -29,7 +30,7 @@ const buttonRestart = document.querySelector('.button-restart'),
 function updateStats() {
     scorePanelNumber.textContent = score;
     rewardPanelNumber.textContent = reward;
-    levelPanelNumber.textContent = level;
+    levelPanelNumber.textContent = wins;
     livesPanelNumber.textContent = lives;
     timePanelGunman.textContent = (gunmanTime / 100).toFixed(2);
     timePanelPlayer.textContent = '0.00';
@@ -37,6 +38,7 @@ function updateStats() {
 
 function startGame() {
     level = 1;
+    wins = 0;
     score = 0;
     gameMenu.style.display = 'none';
     updateStats();
@@ -85,14 +87,27 @@ function nextLevel() {
     message.textContent = '';
     
     gunman.classList.remove(`gunman-level-${level}`);
-    level++;
-    if(level == 6) {
-        location.reload();
-        return;
+    wins++;
+    if(wins >= 5) {
+        let next = Math.floor((Math.random() * 5) + 1);
+        console.log(next);
+        while(next == level) {
+            next = Math.floor((Math.random() * 5) + 1);
+        }
+        level = next;
+        console.log(level);
+        
+        gunmanTime = (3 + Math.floor(Math.random() * (wins * 5) / (wins + level))) * 10;
+        console.log(gunmanTime);
+        reward = 4500 + Math.floor(wins * 100 / gunmanTime) * 100;
+        console.log(reward);
+    }
+    else {
+        level++;
+        gunmanTime -= 30; 
+        reward += 500;
     }
     gunman.classList.add(`gunman-level-${level}`);
-    gunmanTime -= 30;
-    reward += 500;
     updateStats();
     setTimeout(() => {
         gameWrapper.style.display = 'block';

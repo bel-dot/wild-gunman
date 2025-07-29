@@ -10,7 +10,7 @@ Made with vanilla HTML, CSS and JavaScript.
 
 ## To-do:
 - Score saves with localStorage.
-- Infinite mode (do not end on the 5th level).
+~~- Infinite mode (do not end on the 5th level).~~
 - Add other modes (with two outlaws and gang).
 - Add screen adaptivity.
 
